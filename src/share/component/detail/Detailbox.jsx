@@ -1,9 +1,7 @@
 import React from 'react'
 
-function Detail() {
-  return (
-    <div>Detail</div>
-  )
+function Detailbox() {
+  return <div>asdasdasdasd</div>;
 }
 
-export default Detail
+export default Detailbox;

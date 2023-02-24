@@ -1,7 +1,7 @@
 import React from 'react'
 import Detailbox from '../component/detail/Detailbox'
-function Datail() {
+function Detail() {
   return <Detailbox />;
 }
 
-export default Datail
+export default Detail;

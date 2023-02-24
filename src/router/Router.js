@@ -1,12 +1,12 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Detail from '../share/component/detail/Detail'
+import Detail from '../share/page/Detail'
 const Router =()=>{
     <BrowserRouter>
         <Routes>
-            <Route path="/" element={<login/>}/>
-            <Route path="/main" element={<main/>}/>
-            <Route path="/main:id" element={<Detail/>}/>
+            {/* <Route path="/" element={<login/>}/>
+            <Route path="/main" element={<main/>}/> */}
+            <Route path="/Detail" element={<Detail/>}/>
         </Routes>
     </BrowserRouter>
 }
