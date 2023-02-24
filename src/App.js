@@ -3,12 +3,7 @@ import { Globalstyle } from "./Globalstyle";
 import "./App.css";
 import Router from "./router/Router";
 function App() {
-  return (
-    <QueryClientProvider client={QueryClient}>
-      <Globalstyle />
-      <Router />
-    </QueryClientProvider>
-  )
+  return <div></div>;
 }
 
 export default App;
