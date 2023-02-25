@@ -10,8 +10,6 @@ import {
   ColStart,
   TextMonth,
   PrevNext,
-  ColEnd,
-  LogoutBtn,
   Days,
   DaysCol,
   Body,
@@ -39,10 +37,6 @@ const RenderHeader = ({ currentMonth, prevMonth, nextMonth }) => {
           <TextMonth>{format(currentMonth, "M")}월</TextMonth>
         </Text>
       </ColStart>
-      <ColEnd>
-        <div>000님</div>
-        <LogoutBtn>로그아웃</LogoutBtn>
-      </ColEnd>
     </Header>
   );
 };
@@ -119,20 +113,27 @@ const Main = () => {
   const onDateClick = (day) => {
     setSelectedDate(day);
   };
+  const consolDate = (day) => {
+    console.log(setSelectedDate(day));
+  };
   return (
-    <Calendar>
-      <RenderHeader
-        currentMonth={currentMonth}
-        prevMonth={prevMonth}
-        nextMonth={nextMonth}
-      />
-      <RenderDays />
-      <RenderCells
-        currentMonth={currentMonth}
-        selectedDate={selectedDate}
-        onDateClick={onDateClick}
-      />
-    </Calendar>
+    <>
+      <Calendar>
+        <RenderHeader
+          currentMonth={currentMonth}
+          prevMonth={prevMonth}
+          nextMonth={nextMonth}
+        />
+        <RenderDays />
+        <RenderCells
+          currentMonth={currentMonth}
+          selectedDate={selectedDate}
+          onDateClick={onDateClick}
+          onClick={consolDate}
+        />
+      </Calendar>
+      <div></div>
+    </>
   );
 };
 
