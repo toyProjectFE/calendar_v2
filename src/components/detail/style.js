@@ -13,8 +13,6 @@ const TOPbox = styled.div`
   justify-content: space-between;
   align-items: center ;
 `
-const Numbox = styled.div`
-`
 
 const Tapboxli = styled.li`
   margin-right: 20px;
@@ -49,9 +47,9 @@ const Btnbox = styled.div`
     height: 656px;
     padding: 4px;
     &::-webkit-scrollbar{
-    width:1px;
-    background:#f8f8f8;
-  }
+      width:1px;
+      background:#f8f8f8;
+    }
 `
 const Allbox = styled.ul`
   display: flex;
@@ -96,6 +94,7 @@ const Button = styled.button`
   border-radius: 26px;
   outline: 0;
   border: 0;
+  line-height: 26px;
   cursor: pointer;
   &:hover {
     background: #c650f0;
@@ -138,7 +137,7 @@ const Rightbg = styled.div`
     overflow-y: scroll;
     box-sizing: border-box;
     
-    padding: 0px 50px;
+    padding: 60px 50px;
     &::-webkit-scrollbar{
         width:1px;
         background:#fff;
@@ -146,7 +145,7 @@ const Rightbg = styled.div`
 `
 const Rightcenter = styled.form`
 width:100%;
-margin-top:80px;
+
 `
 const Box = styled.div`
     margin-top:40px;
@@ -182,7 +181,7 @@ const Input = styled.input`
 `
 const Textarea = styled.textarea`
     width:100%;
-    height:370px;
+    height:300px;
     background: #F8F8F8;
     border-radius: 5px;
     padding:20px;
@@ -212,4 +211,4 @@ const RightButton = styled.button`
     margin-top:30px;
     cursor: pointer;
 `
-export {Rightcenter,RightButton,Label,Input,Box,Textarea,Content,Title,Button,Top,Allboxli,Allbox,Tapboxlink,Tapboxli,Numbox,TOPbox,Detaillbg,Btnbox,Detailbox,Rightbg}
+export {Rightcenter,RightButton,Label,Input,Box,Textarea,Content,Title,Button,Top,Allboxli,Allbox,Tapboxlink,Tapboxli,TOPbox,Detaillbg,Btnbox,Detailbox,Rightbg}

@@ -63,7 +63,7 @@ function Detailleftbox() {
             </Tapboxlink>
           </Tapboxli>
         </Allbox>
-        <Numbox>20/30</Numbox>
+        <p>20/30</p>
       </TOPbox>
       <Btnbox>
         <Allbox className={openTab === 1 ? "block" : "hidden"} id="link1">

@@ -25,19 +25,22 @@ const Globalstyle = createGlobalStyle`
         font-weight: 700;
         font-style: normal;
     }
-
-    body{
+    @font-face {
+    font-family: 'Gabriela';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/gabriela/v14/qkBWXvsO6sreR8E-b8m5xLs.woff2) format('woff2');
+    }
+    body,a,button{
         font-family: 'Pretendard';
         font-weight: 400;
         font-size:16px;
         color:#1d1d1d;
         line-height: 1.7;
-        
-    }
-   
-    a{
         text-decoration: none;
-        color: #1d1d1d;
+        outline: 0;
+        border:0;
     }
 `;
 

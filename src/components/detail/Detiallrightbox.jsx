@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useQueryClient } from 'react-query';
+//import { useQueryClient } from 'react-query';
 import {
   Rightbg,
   Label,
@@ -10,7 +10,7 @@ import {
   Rightcenter,
 } from "./style";
 function Detiallrightbox() {
-  const queryClient = useQueryClient();
+  //const queryClient = useQueryClient();
 
   //작성자명
   const [userName, setUserName] = useState("");
