@@ -144,7 +144,7 @@ const Rightbg = styled.div`
         background:#fff;
     }
 `
-const Rightcenter = styled.div`
+const Rightcenter = styled.form`
 width:100%;
 margin-top:80px;
 `
@@ -210,5 +210,6 @@ const RightButton = styled.button`
     font-family: 'Pretendard';
     border-radius: 5px;
     margin-top:30px;
+    cursor: pointer;
 `
 export {Rightcenter,RightButton,Label,Input,Box,Textarea,Content,Title,Button,Top,Allboxli,Allbox,Tapboxlink,Tapboxli,Numbox,TOPbox,Detaillbg,Btnbox,Detailbox,Rightbg}

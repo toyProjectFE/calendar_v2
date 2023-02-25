@@ -1,15 +1,9 @@
 import React from "react";
-import Detailleftbox from "../components/detail/Detailleftbox";
-import Detiallrightbox from "../components/detail/Detiallrightbox";
-import { Detailbox } from "../components/detail/style";
+import Detailwrap from "../components/detail/Detailwrap";
 function Detail() {
   return (
     <>
-      {/* <RenderHeader /> */}
-      <Detailbox>
-        <Detailleftbox />
-        <Detiallrightbox />
-      </Detailbox>
+      <Detailwrap />
     </>
   );
 }
