@@ -8,7 +8,6 @@ import {
   Allbox,
   Tapboxlink,
   Tapboxli,
-  Numbox,
   TOPbox,
   Detaillbg,
   Btnbox,

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-//import { useQueryClient } from 'react-query';
+import { useMutation, useQueryClient } from 'react-query';
+import { addCalender } from "../../api/api";
 import {
   Rightbg,
   Label,
@@ -10,8 +11,13 @@ import {
   Rightcenter,
 } from "./style";
 function Detiallrightbox() {
-  //const queryClient = useQueryClient();
-
+  const queryClient = useQueryClient();
+  const muraruion = useMutation(addCalender, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("user");
+      console.log("성공하였습니다.");
+    },
+  });
   //작성자명
   const [userName, setUserName] = useState("");
   const userNameHandler = (e) => {
@@ -39,8 +45,13 @@ function Detiallrightbox() {
       alert("내용을 적어주세요");
       return;
     }
-
-
+    const newCalender = {
+      title: title,
+      userName: userName,
+      content: content,
+      Done:false,
+    };
+    muraruion.mutate(newCalender);
     //state 초기화 
     setUserName('')
     setTitle("");
