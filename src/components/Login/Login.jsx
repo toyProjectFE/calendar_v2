@@ -3,31 +3,32 @@ import {
   Liha,
   MainContainer,
   IdInput,
-  PasswordInput,
   StyledDiv,
   LoginTitle,
   LoginBtn,
   LoginBtnKaKAo,
   DivContainer,
   FormContainer,
+  Loginbox,
 } from "./styles";
 
 function Login() {
   return (
     <MainContainer>
       <StyledDiv>
-        <LoginTitle>Login</LoginTitle>
-
-        <FormContainer>
-          <IdInput />
-          <PasswordInput type="password" />
-          <LoginBtn>로그인</LoginBtn>
-          <LoginBtnKaKAo>카카오 로그인</LoginBtnKaKAo>
-          <DivContainer>
-            <span>아직 회원 아님?</span>
-            <span>회원가입</span>
-          </DivContainer>
-        </FormContainer>
+        <Loginbox>
+          <LoginTitle>Login</LoginTitle>
+          <FormContainer>
+            <IdInput placeholder="아이디를 적어주세요" />
+            <IdInput type="password" placeholder="비밀번호를 적어주세요" />
+            <LoginBtn>Login</LoginBtn>
+            <LoginBtnKaKAo>kakao Login</LoginBtnKaKAo>
+            <DivContainer>
+              <span>아직 회원 아님?</span>
+              <span>회원가입</span>
+            </DivContainer>
+          </FormContainer>
+        </Loginbox>
       </StyledDiv>
       <Liha>동영상이지롱</Liha>
     </MainContainer>
