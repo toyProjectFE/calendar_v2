@@ -1,51 +1,17 @@
 import React, { useState } from "react";
-import { Icon } from "@iconify/react";
+import RenderHeader from "../header/RenderHeader";
 import { format, addMonths, subMonths } from "date-fns";
 import { startOfMonth, endOfMonth, startOfWeek, endOfWeek } from "date-fns";
 import { isSameMonth, isSameDay, addDays, parse } from "date-fns";
 import {
   Calendar,
-  Header,
-  Text,
-  ColStart,
-  TextMonth,
-  PrevNext,
-  ColEnd,
-  LogoutBtn,
   Days,
   DaysCol,
   Body,
   BodyRow,
 } from "./style";
 import "./style.scss";
-const RenderHeader = ({ currentMonth, prevMonth, nextMonth }) => {
-  return (
-    <Header>
-      <ColStart>
-        <PrevNext>
-          <Icon
-            style={{ cursor: "pointer", transform: "scale(1.3)" }}
-            icon="bi:arrow-left-circle-fill"
-            onClick={prevMonth}
-          />
-          <Icon
-            style={{ cursor: "pointer", transform: "scale(1.3)" }}
-            icon="bi:arrow-right-circle-fill"
-            onClick={nextMonth}
-          />
-        </PrevNext>
-        <Text>
-          {format(currentMonth, "yyyy")}
-          <TextMonth>{format(currentMonth, "M")}월</TextMonth>
-        </Text>
-      </ColStart>
-      <ColEnd>
-        <div>000님</div>
-        <LogoutBtn>로그아웃</LogoutBtn>
-      </ColEnd>
-    </Header>
-  );
-};
+
 
 const RenderDays = () => {
   const days = [];
