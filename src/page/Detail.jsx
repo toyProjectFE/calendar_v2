@@ -1,8 +1,17 @@
 import React from "react";
-import Detailbox from "../components/detail/Detailbox";
-
+import Detailleftbox from "../components/detail/Detailleftbox";
+import Detiallrightbox from "../components/detail/Detiallrightbox";
+import { Detailbox } from "../components/detail/style";
 function Detail() {
-  return <Detailbox />;
+  return (
+    <>
+      {/* <RenderHeader /> */}
+      <Detailbox>
+        <Detailleftbox />
+        <Detiallrightbox />
+      </Detailbox>
+    </>
+  );
 }
 
 export default Detail;

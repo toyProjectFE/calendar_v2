@@ -1,5 +1,5 @@
 import React from "react";
-import Login from "../components/Login";
+import Login from "../components/Login/Login";
 
 function login() {
   return (
@@ -9,4 +9,4 @@ function login() {
   );
 }
 
-export default Login;
+export default login;
