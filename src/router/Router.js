@@ -1,16 +1,18 @@
-import React from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Detail from '../share/page/Detail'
-const Router =()=>{
-    return(
-        <BrowserRouter>
-            <Routes>
-                {/* <Route path="/" element={<login/>}/>
-                <Route path="/main" element={<main/>}/> */}
-                <Route path="/Detail" element={<Detail/>}/>
-            </Routes>
-        </BrowserRouter>
-    )
-}
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Detail from "../page/Detail";
+import Main from "../page/Main";
 
-export default Router
+const Router = () => {
+  return (
+    <BrowserRouter>
+      <Routes>
+        {/* <Route path="/" element={<login />} /> */}
+        <Route path="/main" element={<Main />} />
+        <Route path="/Detail" element={<Detail />} />
+      </Routes>
+    </BrowserRouter>
+  );
+};
+
+export default Router;

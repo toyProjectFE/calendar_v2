@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from "styled-components";
 
 const Globalstyle = createGlobalStyle`
    @font-face {
@@ -25,6 +25,7 @@ const Globalstyle = createGlobalStyle`
         font-weight: 700;
         font-style: normal;
     }
+
     body{
         font-family: 'Pretendard';
         font-weight: 400;
@@ -38,6 +39,6 @@ const Globalstyle = createGlobalStyle`
         text-decoration: none;
         color: #1d1d1d;
     }
-` 
+`;
 
-export default Globalstyle
+export default Globalstyle;
