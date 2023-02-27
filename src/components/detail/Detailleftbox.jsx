@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import {
   Content,
   Title,
@@ -13,8 +13,8 @@ import {
   Btnbox,
 } from "./style";
 
-function Detailleftbox() {
-  const [openTab,setOpentab] = useState(1)
+function Detailleftbox({ id }) {
+  const [openTab, setOpentab] = useState(1);
   return (
     <Detaillbg>
       <TOPbox>
@@ -187,4 +187,4 @@ function Detailleftbox() {
   );
 }
 
-export default Detailleftbox
+export default Detailleftbox;

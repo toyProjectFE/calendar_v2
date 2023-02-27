@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Icon } from "@iconify/react";
 import { format, addMonths, subMonths } from "date-fns";
 import { startOfMonth, endOfMonth, startOfWeek, endOfWeek } from "date-fns";
-import { isSameMonth, isSameDay, addDays, parse } from "date-fns";
+import { isSameMonth, isSameDay, addDays } from "date-fns";
 import {
   Calendar,
   Header,
@@ -16,6 +16,11 @@ import {
   BodyRow,
 } from "./style";
 import "./style.scss";
+import { getSchedules } from "../../axios/api";
+import { useMutation, useQuery, useQueryClient } from "react-query";
+import { useNavigate } from "react-router";
+import { addSchedule } from "../../axios/api";
+
 const RenderHeader = ({ currentMonth, prevMonth, nextMonth }) => {
   return (
     <Header>
@@ -63,6 +68,14 @@ const RenderCells = ({ currentMonth, selectedDate, onDateClick }) => {
   let day = startDate;
   let formattedDate = "";
 
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+  const mutation = useMutation(addSchedule, {
+    onSuccess: () => {
+      //
+      queryClient.invalidateQueries("schedules");
+    },
+  });
   while (day <= endDate) {
     for (let i = 0; i < 7; i++) {
       formattedDate = format(day, "d");
@@ -79,7 +92,14 @@ const RenderCells = ({ currentMonth, selectedDate, onDateClick }) => {
               : "valid"
           }`}
           key={day}
-          onClick={() => onDateClick(parse(cloneDay))}
+          onClick={() => {
+            let currentDayID = Date.parse(cloneDay);
+            const newSchedule = {
+              date: currentDayID,
+            };
+            mutation.mutate(newSchedule);
+            return console.log(Date.parse(cloneDay));
+          }}
         >
           <span
             className={
@@ -104,6 +124,8 @@ const Main = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(new Date());
 
+  const { data } = useQuery("products", getSchedules);
+
   const prevMonth = () => {
     setCurrentMonth(subMonths(currentMonth, 1));
   };
@@ -116,6 +138,9 @@ const Main = () => {
   const consolDate = (day) => {
     console.log(setSelectedDate(day));
   };
+
+  // const { isLoading, isError, data } = useQuery("schedules", getSchedules);
+
   return (
     <>
       <Calendar>
