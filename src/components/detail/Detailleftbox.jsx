@@ -8,7 +8,6 @@ import {
   Allbox,
   Tapboxlink,
   Tapboxli,
-  Numbox,
   TOPbox,
   Detaillbg,
   Btnbox,
@@ -63,7 +62,7 @@ function Detailleftbox({ id }) {
             </Tapboxlink>
           </Tapboxli>
         </Allbox>
-        <Numbox>20/30</Numbox>
+        <p>20/30</p>
       </TOPbox>
       <Btnbox>
         <Allbox className={openTab === 1 ? "block" : "hidden"} id="link1">

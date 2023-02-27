@@ -1,15 +1,11 @@
 import React from "react";
-import Detailleftbox from "../components/detail/Detailleftbox";
-import Detiallrightbox from "../components/detail/Detiallrightbox";
-import { Detailbox } from "../components/detail/style";
-
+import Detailwrap from "../components/detail/Detailwrap";
+import Header from "../components/header/Header";
 function Detail() {
   return (
     <>
-      <Detailbox>
-        <Detailleftbox />
-        <Detiallrightbox />
-      </Detailbox>
+      <Header/>
+      <Detailwrap />
     </>
   );
 }
