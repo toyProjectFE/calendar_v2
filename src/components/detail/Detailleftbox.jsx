@@ -7,6 +7,7 @@ import { useMutation } from 'react-query';
 import { swichSchedule } from '../../api/api';
 
 import Card from './Card';
+
 import {
   Allbox,
   Tapboxlink,
@@ -16,8 +17,10 @@ import {
   Btnbox,
 } from "./style";
 
-function Detailleftbox() {
-// const schedule = useSelector((state) => {
+
+
+function Detailleftbox({ id }) {
+  // const schedule = useSelector((state) => {
 //   console.log(state.cal.schedule);
 //   return state.cal.schedule;
   
