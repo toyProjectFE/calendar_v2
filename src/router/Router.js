@@ -13,6 +13,7 @@ const Router = () => {
         <Route path="/sign" element={<Sign />} />
         <Route path="/main" element={<Main />} />
         <Route path="/main/:id" element={<Detail />} />
+        {/* <Route path="/Detail" element={<Detail />} /> */}
       </Routes>
     </BrowserRouter>
   );

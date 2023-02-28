@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useMutation, useQueryClient } from 'react-query';
 import { addSchedule } from '../../axios/api';
-import { v4 as uuidv4 } from "uuid";
+import { useParams } from "react-router";
 import {
   Rightbg,
   Label,
@@ -12,10 +12,13 @@ import {
   Rightcenter,
 } from "./style";
 function Detiallrightbox() {
+  const { id } = useParams();
   const queryClient = useQueryClient();
+  
   const muraruion = useMutation(addSchedule, {
     onSuccess: () => {
       queryClient.invalidateQueries("schedule");
+      console.log(queryClient.invalidateQueries("schedule"))
       console.log("성공하였습니다.");
     },
     onError: () => {
@@ -23,6 +26,7 @@ function Detiallrightbox() {
       console.log("실패하셧습니다.");
     },
   });
+  
   //작성자명
   const [author, setAuthor] = useState("");
   const userAuthorHandler = (e) => {
@@ -38,6 +42,7 @@ function Detiallrightbox() {
   const contentsHandler = (e) => {
     setContents(e.target.value);
   };
+  
   const btnClick = (e)=>{
     e.preventDefault();
     if (title.trim() === "") {
@@ -54,16 +59,16 @@ function Detiallrightbox() {
       title: title,
       author: author,
       contents: contents,
-      id: uuidv4(),
-      complete: false,
+      date: id,
     };
     muraruion.mutate(newSchedule);
-    
+    //console.log(muraruion);
     //state 초기화 
     setAuthor("");
     setTitle("");
     setContents("");
   }
+  
   return (
     <Rightbg>
       <Rightcenter onSubmit={btnClick}>
@@ -72,7 +77,7 @@ function Detiallrightbox() {
           <Input
             type="text"
             placeholder="작성자를 적어주세요"
-            maxLength="20"
+            maxLength="15"
             onChange={userAuthorHandler}
             value={author}
           />
@@ -84,6 +89,7 @@ function Detiallrightbox() {
             placeholder="제목을 적어주세요"
             onChange={titleHandler}
             value={title}
+            maxLength="60"
           />
         </Box>
         <Box>
@@ -92,6 +98,7 @@ function Detiallrightbox() {
             placeholder="내용을 적어주세요"
             onChange={contentsHandler}
             value={contents}
+            maxLength="250"
           />
         </Box>
         <RightButton>등록하기</RightButton>

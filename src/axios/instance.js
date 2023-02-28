@@ -2,11 +2,12 @@ import axios from "axios";
 import { getCookie } from "./cookies";
 
 
-// const access_token = getCookie("ACCESS_TOKEN");
+const access_token = getCookie("ACCESS_TOKEN");
 const instance = axios.create({
-  baseURL: `${process.env.REACT_APP_SERVER_URL}/date`,
+  baseURL: `${process.env.REACT_APP_SERVER_URL}`,
   headers: {
-    "Access-Control-Allow-Origin": "*",
+   Authorization: access_token
+   // "Access-Control-Allow-Origin": "*",
   },
   // headers: { Authorization: accessToken },
 
