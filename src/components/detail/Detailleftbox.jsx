@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useQuery, useMutation, useQueryClient } from "react-query";
+import { useParams } from 'react-router';
 import { swichSchedule, getDetail } from "../../axios/api";
 
 import Card from './Card';
@@ -21,6 +22,7 @@ function Detailleftbox() {
 //   return state.cal.schedule;
   
 // });
+  const { currentDayID } = useParams("");
   const queryClient = useQueryClient();
   const swichmurarion = useMutation(swichSchedule, {
     onSuccess: () => {
@@ -40,7 +42,6 @@ function Detailleftbox() {
       // data.complete,
     };
     swichmurarion.mutate(swichbtn);
-    //console.log(data);
   };
   const [openTab, setOpentab] = useState(1);
   const { isLoading, isError, data } = useQuery("schedule", getDetail);

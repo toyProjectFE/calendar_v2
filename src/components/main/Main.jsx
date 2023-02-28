@@ -98,6 +98,7 @@ const RenderCells = ({ currentMonth, selectedDate, onDateClick }) => {
               date: currentDayID,
             };
             mutation.mutate(newSchedule);
+            navigate(`/main/${currentDayID}`);
             return console.log(Date.parse(cloneDay));
           }}
         >
