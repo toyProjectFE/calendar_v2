@@ -13,12 +13,12 @@ import {
 } from "./style";
 function Detiallrightbox() {
   const { id } = useParams();
+  //console.log(number);
   const queryClient = useQueryClient();
   
   const muraruion = useMutation(addSchedule, {
     onSuccess: () => {
       queryClient.invalidateQueries("schedule");
-      console.log(queryClient.invalidateQueries("schedule"))
       console.log("성공하였습니다.");
     },
     onError: () => {
@@ -62,7 +62,6 @@ function Detiallrightbox() {
       date: id,
     };
     muraruion.mutate(newSchedule);
-    //console.log(muraruion);
     //state 초기화 
     setAuthor("");
     setTitle("");
