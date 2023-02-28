@@ -17,13 +17,11 @@ const getSchedules = async () => {
   return response.data;
 };
 
-
 //조회 디테일
 const getDetail = async (id) => {
-    const response = await instance.get(`/schedule/${id}`);
-    return response.data;
+  const response = await instance.get(`/schedule/${id}`);
+  return response.data;
 };
-
 
 const addDate = async (newDate) => {
   await instance.post(`/schedule`, newDate);
@@ -35,11 +33,10 @@ const addSchedule = async (newSchedule) => {
 };
 //트루펄스 디테일
 const swichSchedule = async (payload) => {
-  await instance.patch(`/date/${payload.id}`,{
-    complete:payload.complete
+  await instance.patch(`/date/${payload.id}`, {
+    complete: payload.complete,
   });
 };
-
 
 const removeDate = async (id) => {
   await instance.delete(`${process.env.REACT_APP_SERVER_URL}/schedule/${id}`);
@@ -47,7 +44,7 @@ const removeDate = async (id) => {
 
 const removeSchedule = async (id, postId) => {
   await instance.delete(
-    `${process.env.REACT_APP_SERVER_URL}/schedule/${id}/${postId}`,
+    `${process.env.REACT_APP_SERVER_URL}/schedule/${id}/${postId}`
   );
 };
-export { getSchedules, addSchedule, removeSchedule,getDetail,swichSchedule };
+export { getSchedules, addSchedule, removeSchedule, getDetail, swichSchedule };
