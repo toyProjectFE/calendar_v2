@@ -72,6 +72,7 @@ const Allboxli = styled.li`
   width: 23.4%;
   padding: 20px;
   box-sizing: border-box;
+  position: relative;
   &:nth-child(4n) {
     margin-right: 0;
   }
@@ -82,11 +83,8 @@ const Allboxli = styled.li`
     border: 1px solid #c650f0;
   }
 `;
-const Top = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom:30px;
+const Bottom = styled.div`
+  margin-top:30px;
 `;
 const Button = styled.button`
   width: 26px;
@@ -95,6 +93,9 @@ const Button = styled.button`
   outline: 0;
   border: 0;
   line-height: 26px;
+  position: absolute;
+  right:20px;
+  top:20px;
   cursor: pointer;
   &:hover {
     background: #c650f0;
@@ -122,7 +123,18 @@ const Content = styled.p`
   -webkit-box-orient: vertical;
   
 `;
-
+const Modalbg = styled.div`
+    background:rgba(0,0,0,0.5);
+    position:fixed;
+    width:100%;
+    height:100%;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    margin:auto;
+    z-index: 99999;
+`
 // ----------------------------------여기서부터 오른쪽 등록 관련 css 입니다. ----------------------------------
 
 const Detailbox = styled.div`
@@ -211,4 +223,4 @@ const RightButton = styled.button`
     margin-top:30px;
     cursor: pointer;
 `
-export {Rightcenter,RightButton,Label,Input,Box,Textarea,Content,Title,Button,Top,Allboxli,Allbox,Tapboxlink,Tapboxli,TOPbox,Detaillbg,Btnbox,Detailbox,Rightbg}
+export {Rightcenter,RightButton,Label,Input,Box,Textarea,Content,Title,Button,Bottom,Allboxli,Allbox,Tapboxlink,Tapboxli,TOPbox,Detaillbg,Btnbox,Detailbox,Rightbg,Modalbg}

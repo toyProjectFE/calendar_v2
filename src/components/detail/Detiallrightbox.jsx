@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useMutation, useQueryClient } from 'react-query';
-import { addCalender } from "../../api/api";
+import { addSchedule } from '../../axios/api';
+import { v4 as uuidv4 } from "uuid";
 import {
   Rightbg,
   Label,
@@ -12,16 +13,20 @@ import {
 } from "./style";
 function Detiallrightbox() {
   const queryClient = useQueryClient();
-  const muraruion = useMutation(addCalender, {
+  const muraruion = useMutation(addSchedule, {
     onSuccess: () => {
-      queryClient.invalidateQueries("user");
+      queryClient.invalidateQueries("schedule");
       console.log("성공하였습니다.");
+    },
+    onError: () => {
+      queryClient.invalidateQueries("schedule");
+      console.log("실패하셧습니다.");
     },
   });
   //작성자명
-  const [userName, setUserName] = useState("");
-  const userNameHandler = (e) => {
-    setUserName(e.target.value);
+  const [author, setAuthor] = useState("");
+  const userAuthorHandler = (e) => {
+    setAuthor(e.target.value);
   };
   //제목
   const [title, setTitle] = useState("");
@@ -29,33 +34,35 @@ function Detiallrightbox() {
     setTitle(e.target.value);
   };
   //내용
-  const [content, setContent] = useState("");
-  const contentHandler = (e) => {
-    setContent(e.target.value);
+  const [contents, setContents] = useState("");
+  const contentsHandler = (e) => {
+    setContents(e.target.value);
   };
   const btnClick = (e)=>{
     e.preventDefault();
     if (title.trim() === "") {
       alert("제목을 적어주세요");
       return;
-    } else if (userName.trim() === "") {
+    } else if (author.trim() === "") {
       alert("작성자명을 적어주세요");
       return;
-    } else if (content.trim() === "") {
+    } else if (contents.trim() === "") {
       alert("내용을 적어주세요");
       return;
     }
-    const newCalender = {
+    const newSchedule = {
       title: title,
-      userName: userName,
-      content: content,
-      Done:false,
+      author: author,
+      contents: contents,
+      id: uuidv4(),
+      complete: false,
     };
-    muraruion.mutate(newCalender);
+    muraruion.mutate(newSchedule);
+    
     //state 초기화 
-    setUserName('')
+    setAuthor("");
     setTitle("");
-    setContent("");
+    setContents("");
   }
   return (
     <Rightbg>
@@ -66,8 +73,8 @@ function Detiallrightbox() {
             type="text"
             placeholder="작성자를 적어주세요"
             maxLength="20"
-            onChange={userNameHandler}
-            value={userName}
+            onChange={userAuthorHandler}
+            value={author}
           />
         </Box>
         <Box>
@@ -83,8 +90,8 @@ function Detiallrightbox() {
           <Label>내용</Label>
           <Textarea
             placeholder="내용을 적어주세요"
-            onChange={contentHandler}
-            value={content}
+            onChange={contentsHandler}
+            value={contents}
           />
         </Box>
         <RightButton>등록하기</RightButton>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Liha,
   MainContainer,
@@ -9,30 +9,72 @@ import {
   LoginBtnKaKAo,
   DivContainer,
   FormContainer,
+  LabledInput,
 } from "./styles";
+import { useMutation, useQueryClient } from "react-query";
+import { loginUser } from "../../api/api";
 
 function Login() {
+  const [userId, setUserId] = useState("");
+  const [userPw, setUserPw] = useState("");
+
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation(loginUser, {
+    onSuccess: (data) => {
+      console.log("data", data);
+      queryClient.invalidateQueries("user");
+    },
+  });
+
+  const handleUserIdChange = (event) => {
+    setUserId(event.target.value);
+  };
+
+  const handleUserPwChange = (event) => {
+    setUserPw(event.target.value);
+  };
+
+  const handleSubmitButtonClick = async (event) => {
+    event.preventDefault();
+
+    const loginUser = {
+      email: userId,
+      password: userPw,
+    };
+    mutation.mutate(loginUser);
+  };
+
   return (
     <MainContainer>
       <StyledDiv>
         <LoginTitle>Login</LoginTitle>
-        <FormContainer>
-          <IdInput placeholder="아이디를 적어주세요" />
-          <IdInput type="password" placeholder="비밀번호를 적어주세요" />
-          <LoginBtn>Login</LoginBtn>
-          <LoginBtnKaKAo>kakao Login</LoginBtnKaKAo>
-          <button
-            id="login-kakao-btn"
-            onclick="location.href=https://kauth.kakao.com/oauth/authorize?client_id=94c5891ab6cec1f5eddede64f8358dd9&redirect_uri=http://15.164.83.27:8080/user/kakao/login&response_type=code"
-          >
-            카카오로그인
-          </button>
+        <form onSubmit={handleSubmitButtonClick}>
+          <FormContainer>
+            <LabledInput
+              id="userId"
+              label="아이디"
+              placeholder="아이디를 입력해주세요."
+              value={userId}
+              onChange={handleUserIdChange}
+            />
 
-          <DivContainer>
-            <span>아직 회원 아님?</span>
-            <span>회원가입</span>
-          </DivContainer>
-        </FormContainer>
+            <LabledInput
+              id="userId"
+              label="비밀번호"
+              placeholder="비밀번호를 입력해주세요."
+              value={userPw}
+              onChange={handleUserPwChange}
+            />
+            <LoginBtn>Login</LoginBtn>
+            <LoginBtnKaKAo>kakao Login</LoginBtnKaKAo>
+
+            <DivContainer>
+              <span>아직 회원 아님?</span>
+              <span>회원가입</span>
+            </DivContainer>
+          </FormContainer>
+        </form>
       </StyledDiv>
       <Liha>동영상이지롱</Liha>
     </MainContainer>

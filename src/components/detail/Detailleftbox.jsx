@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
+import { useQuery, useMutation, useQueryClient } from "react-query";
+import { swichSchedule, getDetail } from "../../axios/api";
+
+import Card from './Card';
+
 import {
-  Content,
-  Title,
-  Button,
-  Top,
-  Allboxli,
   Allbox,
   Tapboxlink,
   Tapboxli,
@@ -13,8 +13,45 @@ import {
   Btnbox,
 } from "./style";
 
-function Detailleftbox({ id }) {
+
+
+function Detailleftbox() {
+  // const schedule = useSelector((state) => {
+//   console.log(state.cal.schedule);
+//   return state.cal.schedule;
+  
+// });
+  const queryClient = useQueryClient();
+  const swichmurarion = useMutation(swichSchedule, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("schedule");
+      console.log("성공하셧습니다.");
+    },
+    onError: () => {
+      queryClient.invalidateQueries("schedule");
+      console.log("실패하셧습니다.");
+    },
+  });
+
+  const swichhander = (id, currentCompleteValue) => {
+    const swichbtn = {
+      id: id,
+      complete: !currentCompleteValue,
+      // data.complete,
+    };
+    swichmurarion.mutate(swichbtn);
+    //console.log(data);
+  };
   const [openTab, setOpentab] = useState(1);
+  const { isLoading, isError, data } = useQuery("schedule", getDetail);
+  //console.log(data);
+  if (isLoading) {
+    return <h1>"성공했습니다!"</h1>;
+  }
+  if (isError) {
+    return <h1>"오류입니다!"</h1>;
+  }
+  
   return (
     <Detaillbg>
       <TOPbox>
@@ -62,129 +99,45 @@ function Detailleftbox({ id }) {
             </Tapboxlink>
           </Tapboxli>
         </Allbox>
-        <p>20/30</p>
+        {/* //<p>20/30</p> */}
       </TOPbox>
       <Btnbox>
         <Allbox className={openTab === 1 ? "block" : "hidden"} id="link1">
-          <Allboxli>
-            <Top>
-              <p>작성자명</p>
-              <Button>
-                <svg
-                  width="12"
-                  height="9"
-                  viewBox="0 0 12 9"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <rect
-                    x="4.24265"
-                    y="8.48528"
-                    width="6"
-                    height="2"
-                    transform="rotate(-135 4.24265 8.48528)"
-                    fill="white"
-                  />
-                  <rect
-                    x="2.82843"
-                    y="7.07108"
-                    width="10"
-                    height="2"
-                    transform="rotate(-45 2.82843 7.07108)"
-                    fill="white"
-                  />
-                </svg>
-              </Button>
-            </Top>
-            <div>
-              <Title>제목을 적어주세요</Title>
-              <Content>
-                내용을 적어주세요 내용을 적어주세요 내용을 적어주세요 내용을
-                적어주세요 내용을 적어주세요 내용을 적어주세요
-              </Content>
-            </div>
-          </Allboxli>
+          {data.map((item) => {
+            if (!item.complete || item.complete) {
+              return (
+                <Card state={item} key={item.id} swichhander={swichhander} />
+              );
+            } else {
+              return null;
+            }
+          })}
         </Allbox>
         <Allbox className={openTab === 2 ? "block" : "hidden"} id="link2">
-          <Allboxli>
-            <Top>
-              <p>작성자명</p>
-              <Button>
-                <svg
-                  width="12"
-                  height="9"
-                  viewBox="0 0 12 9"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <rect
-                    x="4.24265"
-                    y="8.48528"
-                    width="6"
-                    height="2"
-                    transform="rotate(-135 4.24265 8.48528)"
-                    fill="white"
-                  />
-                  <rect
-                    x="2.82843"
-                    y="7.07108"
-                    width="10"
-                    height="2"
-                    transform="rotate(-45 2.82843 7.07108)"
-                    fill="white"
-                  />
-                </svg>
-              </Button>
-            </Top>
-            <div>
-              <Title>제목을 적어주세요</Title>
-              <Content>
-                내용을 적어주세요 내용을 적어주세요 내용을 적어주세요 내용을
-                적어주세요 내용을 적어주세요 내용을 적어주세요
-              </Content>
-            </div>
-          </Allboxli>
+          {data.map((item) => {
+            if (!item.complete) {
+              return (
+                <Card state={item} key={item.id} swichhander={swichhander} />
+              );
+            } else {
+              return null;
+            }
+          })}
         </Allbox>
         <Allbox className={openTab === 3 ? "block" : "hidden"} id="link3">
-          <Allboxli>
-            <Top>
-              <p>작성자명</p>
-              <Button>
-                <svg
-                  width="12"
-                  height="9"
-                  viewBox="0 0 12 9"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <rect
-                    x="4.24265"
-                    y="8.48528"
-                    width="6"
-                    height="2"
-                    transform="rotate(-135 4.24265 8.48528)"
-                    fill="white"
-                  />
-                  <rect
-                    x="2.82843"
-                    y="7.07108"
-                    width="10"
-                    height="2"
-                    transform="rotate(-45 2.82843 7.07108)"
-                    fill="white"
-                  />
-                </svg>
-              </Button>
-            </Top>
-            <div>
-              <Title>제목을 적어주세요</Title>
-              <Content>내용을 적어주세요용을</Content>
-            </div>
-          </Allboxli>
+          {data.map((item) => {
+            if (item.complete) {
+              return (
+                <Card state={item} key={item.id} swichhander={swichhander} />
+              );
+            } else {
+              return null;
+            }
+          })}
         </Allbox>
       </Btnbox>
     </Detaillbg>
   );
 }
 
-export default Detailleftbox;
+export default Detailleftbox
