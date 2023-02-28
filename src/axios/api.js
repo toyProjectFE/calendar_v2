@@ -13,25 +13,15 @@ const postMemo = async () => {
 };
 
 const getSchedules = async () => {
-<<<<<<< HEAD
-  const response = await instance.get(`/date`);
-=======
   const response = await instance.get(`/data`);
->>>>>>> 6d469cdeba382ed6e8dd49b006ab893c9148d225
   return response.data;
 };
 
 //조회 디테일
-<<<<<<< HEAD
 const getDetail = async (currentDayID) => {
     const response = await instance.get(`/date/${currentDayID}`);
     console.log(response.data)
     return response.data;
-=======
-const getDetail = async (id) => {
-  const response = await instance.get(`/schedule/${id}`);
-  return response.data;
->>>>>>> 6d469cdeba382ed6e8dd49b006ab893c9148d225
 };
 
 const addDate = async (newDate) => {
