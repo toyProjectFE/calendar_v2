@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useMutation, useQueryClient } from 'react-query';
-import { addSchedule } from "../../api/api";
+import { addSchedule } from '../../axios/api';
 import { v4 as uuidv4 } from "uuid";
 import {
   Rightbg,

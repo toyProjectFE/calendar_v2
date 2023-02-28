@@ -1,10 +1,6 @@
-
 import React, { useState } from 'react'
-import {useQuery } from "react-query";
-import { getDetail } from "../../api/api";
-import { useQueryClient } from 'react-query';
-import { useMutation } from 'react-query';
-import { swichSchedule } from '../../api/api';
+import { useQuery, useMutation, useQueryClient } from "react-query";
+import { swichSchedule, getDetail } from "../../axios/api";
 
 import Card from './Card';
 
@@ -19,7 +15,7 @@ import {
 
 
 
-function Detailleftbox({ id }) {
+function Detailleftbox() {
   // const schedule = useSelector((state) => {
 //   console.log(state.cal.schedule);
 //   return state.cal.schedule;
@@ -37,12 +33,10 @@ function Detailleftbox({ id }) {
     },
   });
 
-  const swichhander = (id) => {
+  const swichhander = (id, currentCompleteValue) => {
     const swichbtn = {
       id: id,
-      complete: data.filter((item) =>
-        item.id === id ? { complete: !data.complete } : data
-      ),
+      complete: !currentCompleteValue,
       // data.complete,
     };
     swichmurarion.mutate(swichbtn);

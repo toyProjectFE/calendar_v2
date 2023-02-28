@@ -2,10 +2,10 @@ import axios from "axios";
 
 // axios instance  생성 세션이랑 협업세션
 // const ACCESS_TOKEN = await.axios.get()
-const accessToken = getCookie(ACCESS_TOKEN);
+// const accessToken = getCookie(ACCESS_TOKEN);
 // const accessToken = localStorage.setItem("token");
 const instance = axios.create({
-  baseURL: `${process.env.REACT_APP_SERVER_URL}`,
+  baseURL: `${process.env.REACT_APP_SERVER_URL}/date`,
   headers: {
     "Access-Control-Allow-Origin": "*",
   },

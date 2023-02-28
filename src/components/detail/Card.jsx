@@ -7,7 +7,7 @@ function Card({ state, swichhander }) {
   };
   return (
     <Allboxli key={state.id}>
-      <Button onClick={() => swichhander(state.id)}>
+      <Button onClick={() => swichhander(state.id, state.complete)}>
         <svg
           width="12"
           height="9"
