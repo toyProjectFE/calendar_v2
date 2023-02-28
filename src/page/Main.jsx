@@ -1,13 +1,5 @@
 import React from "react";
 import Main from "../components/main/Main";
-<<<<<<< HEAD
-import RenderHeader from "../components/header/RenderHeader";
-function main() {
-  return (
-    <>
-      <RenderHeader />
-      <Main />
-=======
 import Header from "../components/header/Header";
 import MemoSection from "./../components/memoSection/MemoSection";
 import styled from "styled-components";
@@ -19,7 +11,6 @@ function main() {
         <MemoSection />
         <Main />
       </Layout>
->>>>>>> 74ea3934d8b3aaeca3a6442d253ed110d762c6f3
     </>
   )
   

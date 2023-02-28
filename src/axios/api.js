@@ -1,4 +1,4 @@
-
+import axios from "axios";
 import instance from "./instance";
 
 const getMemo = async () => {
@@ -18,22 +18,19 @@ const getSchedules = async () => {
 };
 
 //조회 디테일
-const getDetail = async (currentDayID) => {
-    const response = await instance.get(`/date/${currentDayID}`);
-    console.log(response.data)
-    return response.data;
+const getDetail = async (id) => {
+  const response = await instance.get(`/schedule/${id}`);
+  return response.data;
 };
 
 const addDate = async (newDate) => {
-  await instance.post(`/date`, newDate);
+  await instance.post(`/schedule`, newDate);
 };
 
 //생성 디테일
-const addSchedule = async (newSchedule,currentDayID) => {
-  await instance.post(`/date/${currentDayID}`, newSchedule);
-  
+const addSchedule = async (newSchedule) => {
+  await instance.post(`/date`, newSchedule);
 };
-console.log(addSchedule)
 //트루펄스 디테일
 const swichSchedule = async (payload) => {
   await instance.patch(`/date/${payload.id}`, {

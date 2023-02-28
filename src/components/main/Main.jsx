@@ -1,27 +1,21 @@
 import React, { useState } from "react";
-import RenderHeader from "../header/RenderHeader";
+import { Icon } from "@iconify/react";
 import { format, addMonths, subMonths } from "date-fns";
 import { startOfMonth, endOfMonth, startOfWeek, endOfWeek } from "date-fns";
 import { isSameMonth, isSameDay, addDays } from "date-fns";
 import {
   Calendar,
-<<<<<<< HEAD
-=======
   Header,
   Text,
   ColStart,
   TextMonth,
   PrevNext,
->>>>>>> 74ea3934d8b3aaeca3a6442d253ed110d762c6f3
   Days,
   DaysCol,
   Body,
   BodyRow,
 } from "./style";
 import "./style.scss";
-<<<<<<< HEAD
-
-=======
 import { getSchedules } from "../../axios/api";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useNavigate } from "react-router";
@@ -51,7 +45,6 @@ const RenderHeader = ({ currentMonth, prevMonth, nextMonth }) => {
     </Header>
   );
 };
->>>>>>> 74ea3934d8b3aaeca3a6442d253ed110d762c6f3
 
 const RenderDays = () => {
   const days = [];
@@ -106,10 +99,7 @@ const RenderCells = ({ currentMonth, selectedDate, onDateClick }) => {
             };
             mutation.mutate(newSchedule);
             navigate(`/main/${currentDayID}`);
-<<<<<<< HEAD
-=======
 
->>>>>>> 6d469cdeba382ed6e8dd49b006ab893c9148d225
             return console.log(Date.parse(cloneDay));
           }}
         >
@@ -122,7 +112,7 @@ const RenderCells = ({ currentMonth, selectedDate, onDateClick }) => {
           >
             {formattedDate}
           </span>
-        </div>,
+        </div>
       );
       day = addDays(day, 1);
     }
