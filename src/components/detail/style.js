@@ -13,8 +13,11 @@ const TOPbox = styled.div`
   justify-content: space-between;
   align-items: center ;
 `
+<<<<<<< HEAD
 const Numbox = styled.div`
 `
+=======
+>>>>>>> 74ea3934d8b3aaeca3a6442d253ed110d762c6f3
 
 const Tapboxli = styled.li`
   margin-right: 20px;
@@ -49,9 +52,15 @@ const Btnbox = styled.div`
     height: 656px;
     padding: 4px;
     &::-webkit-scrollbar{
+<<<<<<< HEAD
     width:1px;
     background:#f8f8f8;
   }
+=======
+      width:1px;
+      background:#f8f8f8;
+    }
+>>>>>>> 74ea3934d8b3aaeca3a6442d253ed110d762c6f3
 `
 const Allbox = styled.ul`
   display: flex;
@@ -74,6 +83,10 @@ const Allboxli = styled.li`
   width: 23.4%;
   padding: 20px;
   box-sizing: border-box;
+<<<<<<< HEAD
+=======
+  position: relative;
+>>>>>>> 74ea3934d8b3aaeca3a6442d253ed110d762c6f3
   &:nth-child(4n) {
     margin-right: 0;
   }
@@ -84,11 +97,16 @@ const Allboxli = styled.li`
     border: 1px solid #c650f0;
   }
 `;
+<<<<<<< HEAD
 const Top = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom:30px;
+=======
+const Bottom = styled.div`
+  margin-top:30px;
+>>>>>>> 74ea3934d8b3aaeca3a6442d253ed110d762c6f3
 `;
 const Button = styled.button`
   width: 26px;
@@ -96,6 +114,13 @@ const Button = styled.button`
   border-radius: 26px;
   outline: 0;
   border: 0;
+<<<<<<< HEAD
+=======
+  line-height: 26px;
+  position: absolute;
+  right:20px;
+  top:20px;
+>>>>>>> 74ea3934d8b3aaeca3a6442d253ed110d762c6f3
   cursor: pointer;
   &:hover {
     background: #c650f0;
@@ -123,7 +148,22 @@ const Content = styled.p`
   -webkit-box-orient: vertical;
   
 `;
+<<<<<<< HEAD
 
+=======
+const Modalbg = styled.div`
+    background:rgba(0,0,0,0.5);
+    position:fixed;
+    width:100%;
+    height:100%;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    margin:auto;
+    z-index: 99999;
+`
+>>>>>>> 74ea3934d8b3aaeca3a6442d253ed110d762c6f3
 // ----------------------------------여기서부터 오른쪽 등록 관련 css 입니다. ----------------------------------
 
 const Detailbox = styled.div`
@@ -138,15 +178,25 @@ const Rightbg = styled.div`
     overflow-y: scroll;
     box-sizing: border-box;
     
+<<<<<<< HEAD
     padding: 0px 50px;
+=======
+    padding: 60px 50px;
+>>>>>>> 74ea3934d8b3aaeca3a6442d253ed110d762c6f3
     &::-webkit-scrollbar{
         width:1px;
         background:#fff;
     }
 `
+<<<<<<< HEAD
 const Rightcenter = styled.div`
 width:100%;
 margin-top:80px;
+=======
+const Rightcenter = styled.form`
+width:100%;
+
+>>>>>>> 74ea3934d8b3aaeca3a6442d253ed110d762c6f3
 `
 const Box = styled.div`
     margin-top:40px;
@@ -182,7 +232,11 @@ const Input = styled.input`
 `
 const Textarea = styled.textarea`
     width:100%;
+<<<<<<< HEAD
     height:370px;
+=======
+    height:300px;
+>>>>>>> 74ea3934d8b3aaeca3a6442d253ed110d762c6f3
     background: #F8F8F8;
     border-radius: 5px;
     padding:20px;
@@ -210,6 +264,12 @@ const RightButton = styled.button`
     font-family: 'Pretendard';
     border-radius: 5px;
     margin-top:30px;
+<<<<<<< HEAD
 
 `
 export {Rightcenter,RightButton,Label,Input,Box,Textarea,Content,Title,Button,Top,Allboxli,Allbox,Tapboxlink,Tapboxli,Numbox,TOPbox,Detaillbg,Btnbox,Detailbox,Rightbg}
+=======
+    cursor: pointer;
+`
+export {Rightcenter,RightButton,Label,Input,Box,Textarea,Content,Title,Button,Bottom,Allboxli,Allbox,Tapboxlink,Tapboxli,TOPbox,Detaillbg,Btnbox,Detailbox,Rightbg,Modalbg}
+>>>>>>> 74ea3934d8b3aaeca3a6442d253ed110d762c6f3

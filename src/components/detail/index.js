@@ -1,1 +1,1 @@
-export { default } from "./Detailbox";
+export { default } from "./Detail";

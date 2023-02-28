@@ -2,16 +2,56 @@ import React, { useState } from "react";
 import RenderHeader from "../header/RenderHeader";
 import { format, addMonths, subMonths } from "date-fns";
 import { startOfMonth, endOfMonth, startOfWeek, endOfWeek } from "date-fns";
-import { isSameMonth, isSameDay, addDays, parse } from "date-fns";
+import { isSameMonth, isSameDay, addDays } from "date-fns";
 import {
   Calendar,
+<<<<<<< HEAD
+=======
+  Header,
+  Text,
+  ColStart,
+  TextMonth,
+  PrevNext,
+>>>>>>> 74ea3934d8b3aaeca3a6442d253ed110d762c6f3
   Days,
   DaysCol,
   Body,
   BodyRow,
 } from "./style";
 import "./style.scss";
+<<<<<<< HEAD
 
+=======
+import { getSchedules } from "../../axios/api";
+import { useMutation, useQuery, useQueryClient } from "react-query";
+import { useNavigate } from "react-router";
+import { addSchedule } from "../../axios/api";
+
+const RenderHeader = ({ currentMonth, prevMonth, nextMonth }) => {
+  return (
+    <Header>
+      <ColStart>
+        <PrevNext>
+          <Icon
+            style={{ cursor: "pointer", transform: "scale(1.3)" }}
+            icon="bi:arrow-left-circle-fill"
+            onClick={prevMonth}
+          />
+          <Icon
+            style={{ cursor: "pointer", transform: "scale(1.3)" }}
+            icon="bi:arrow-right-circle-fill"
+            onClick={nextMonth}
+          />
+        </PrevNext>
+        <Text>
+          {format(currentMonth, "yyyy")}
+          <TextMonth>{format(currentMonth, "M")}월</TextMonth>
+        </Text>
+      </ColStart>
+    </Header>
+  );
+};
+>>>>>>> 74ea3934d8b3aaeca3a6442d253ed110d762c6f3
 
 const RenderDays = () => {
   const days = [];
@@ -35,6 +75,14 @@ const RenderCells = ({ currentMonth, selectedDate, onDateClick }) => {
   let day = startDate;
   let formattedDate = "";
 
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+  const mutation = useMutation(addSchedule, {
+    onSuccess: () => {
+      //
+      queryClient.invalidateQueries("schedules");
+    },
+  });
   while (day <= endDate) {
     for (let i = 0; i < 7; i++) {
       formattedDate = format(day, "d");
@@ -51,7 +99,16 @@ const RenderCells = ({ currentMonth, selectedDate, onDateClick }) => {
               : "valid"
           }`}
           key={day}
-          onClick={() => onDateClick(parse(cloneDay))}
+          onClick={() => {
+            let currentDayID = Date.parse(cloneDay);
+            const newSchedule = {
+              date: currentDayID,
+            };
+            mutation.mutate(newSchedule);
+            navigate(`/main/${currentDayID}`);
+
+            return console.log(Date.parse(cloneDay));
+          }}
         >
           <span
             className={
@@ -76,6 +133,8 @@ const Main = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(new Date());
 
+  const { data } = useQuery("products", getSchedules);
+
   const prevMonth = () => {
     setCurrentMonth(subMonths(currentMonth, 1));
   };
@@ -85,20 +144,30 @@ const Main = () => {
   const onDateClick = (day) => {
     setSelectedDate(day);
   };
+  const consolDate = (day) => {
+    console.log(setSelectedDate(day));
+  };
+
+  // const { isLoading, isError, data } = useQuery("schedules", getSchedules);
+
   return (
-    <Calendar>
-      <RenderHeader
-        currentMonth={currentMonth}
-        prevMonth={prevMonth}
-        nextMonth={nextMonth}
-      />
-      <RenderDays />
-      <RenderCells
-        currentMonth={currentMonth}
-        selectedDate={selectedDate}
-        onDateClick={onDateClick}
-      />
-    </Calendar>
+    <>
+      <Calendar>
+        <RenderHeader
+          currentMonth={currentMonth}
+          prevMonth={prevMonth}
+          nextMonth={nextMonth}
+        />
+        <RenderDays />
+        <RenderCells
+          currentMonth={currentMonth}
+          selectedDate={selectedDate}
+          onDateClick={onDateClick}
+          onClick={consolDate}
+        />
+      </Calendar>
+      <div></div>
+    </>
   );
 };
 
