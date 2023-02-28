@@ -13,7 +13,7 @@ const postMemo = async () => {
 };
 
 const getSchedules = async () => {
-  const response = await instance.get(`/schedule`);
+  const response = await instance.get(`/data`);
   return response.data;
 };
 
