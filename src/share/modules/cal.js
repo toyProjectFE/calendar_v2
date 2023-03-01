@@ -26,22 +26,12 @@ export const switch_Pass = (payload)=>{
   }
 }
 //초기값 1 
-const ininialState = [
-  {
-    id: 1,
-    username:"유느님",
-    title: "제목입니다.",
-    text: "내용입니다.",
-    Done: false
-  },
-  {
-    id: 2,
-    username:"명수옹",
-    title: "제목입니다.",
-    text: "내용입니다.",
-    Done: false
-  }
-]
+const ininialState = {
+  schedule:[  
+  {id: 1,author:"유느님",title: "제목입니다.", contents: "내용입니다.", complete:false }
+  ]
+}
+
 
 
 
@@ -53,13 +43,9 @@ const cal = (state = ininialState,action)=>{
     case REMOVE_PASS:
       return state.filter((item)=>item.id !==action.payload )
     case SWITCH_PASS:
-      return state.map((item)=>{
-        if(item.id === action.payload){
-          return {...item,Done:!item.Done}
-        }else{
-          return item
-        }
-      })
+      return{
+                schedule : state.schedule.map((schedule) => schedule.id === action.payload ? {...schedule,complete:!schedule.complete} : schedule)
+            }
     default:
       return state
   }

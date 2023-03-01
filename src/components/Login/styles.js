@@ -22,7 +22,7 @@ const LoginTitle = styled.h3`
   margin-bottom: 30px;
   width: 100%;
 `;
-const FormContainer = styled.form`
+const FormContainer = styled.div`
   display: flex;
   width: 100%;
   flex-wrap: wrap;
@@ -96,6 +96,45 @@ const Liha = styled.div`
   width: 70%;
 `;
 
+function LabledInput({ id, label, placeholder, value, onChange }) {
+  return (
+    <StyledContainer>
+      <StyledLabel htmlFor={id}>{label}</StyledLabel>
+      <StyledInput
+        id={id}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+      />
+    </StyledContainer>
+  );
+}
+const StyledContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+`;
+
+const StyledInput = styled.input`
+  height: 30px;
+  width: 300px;
+  border: 0;
+  border-radius: 5px;
+  padding-left: 10px;
+`;
+
+const StyledLabel = styled.label`
+  margin-right: 10px;
+  font-weight: 700;
+`;
+
+const SignUpBtn = styled.button`
+  background-color: transparent;
+  border: 1px solid black;
+  cursor: pointer;
+`;
 export {
   LoginTitle,
   Liha,
@@ -107,4 +146,6 @@ export {
   DivContainer,
   FormContainer,
   Loginbox,
+  LabledInput,
+  SignUpBtn,
 };
