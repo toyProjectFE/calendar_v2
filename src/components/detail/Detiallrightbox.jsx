@@ -16,7 +16,7 @@ import {
 function Detiallrightbox() {
   const { id } = useParams();
   const queryClient = useQueryClient();
-  const muraruion = useMutation(addSchedule, {
+  const mutation = useMutation(addSchedule, {
     onSuccess: (response) => {
       console.log(response);
       queryClient.invalidateQueries("schedule");
@@ -60,10 +60,11 @@ function Detiallrightbox() {
       title: title,
       author: author,
       contents: contents,
+      date: id,
     };
 
-    muraruion.mutate(id, newSchedule);
-    //state 초기화
+    mutation.mutate({ id, newSchedule });
+
     setAuthor("");
     setTitle("");
     setContents("");
@@ -77,7 +78,7 @@ function Detiallrightbox() {
           <Input
             type="text"
             placeholder="작성자를 적어주세요"
-            maxLength="15"
+            maxLength="30"
             onChange={userAuthorHandler}
             value={author}
           />

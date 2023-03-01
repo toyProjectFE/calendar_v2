@@ -1,5 +1,6 @@
 import instance from "./instance";
-
+import axios from "axios";
+import { getCookie } from "./cookies";
 const getMemo = async () => {
   const response = await instance.get(`/memo`);
   return response.data;
@@ -18,6 +19,7 @@ const getSchedules = async () => {
 //해당 날짜 디테일 담은 공간
 //newDate == 내가 클릭한 날짜에 대한 id값
 const addDate = async (newDate) => {
+  //2번째 인자는 json type의  data -> body에 저장
   await instance.post(`/date`, newDate);
 };
 
@@ -28,17 +30,40 @@ const getDetail = async (id) => {
 };
 
 //생성 디테일
-const addSchedule = async (id, newSchedule) => {
+
+const addSchedule = async ({ id, newSchedule }) => {
+  console.log(id);
+  console.log(newSchedule);
+
   await instance.post(`/date/${id}`, newSchedule);
 };
-// const getSchedule = async (id) => {
-//   const response = await instance.get(`/date/${id}`);
-//   return response.data;
+
+// const addSchedule = async (id, newSchedule) => {
+//   await axios({
+//     url: `http://15.164.158.158:8080/date/${id}`,
+//     method: "post",
+//     data: {
+//       title: newSchedule.title,
+//       author: newSchedule.author,
+//       contents: newSchedule.contents,
+//     },
+//   })
+//     .then((response) => console.log(response))
+//     .catch((error) => console.log(error));
 // };
 
+//  title error ???   ㅌ
+// const accessToken = getCookie("ACCESS_TOKEN");
+// const addSchedule = async (id, newSchedule) => {
+//   await axios.post(`/date/${id}`, newSchedule, {
+//     headers: {
+//       Authorization: accessToken,
+//     },
+//   });
+// };
 //삭제 디테일
 const delSchedule = async (id) => {
-  await instance.delete(`/data/schedule/${id}`);
+  await instance.delete(`/data/${id}`);
 };
 //트루펄스 디테일
 const swichSchedule = async (payload) => {

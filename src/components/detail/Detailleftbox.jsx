@@ -16,35 +16,34 @@ import {
 function Detailleftbox() {
   const { id } = useParams();
   const queryClient = useQueryClient();
-  const swichmurarion = useMutation(swichSchedule, {
-    onSuccess: () => {
-      queryClient.invalidateQueries("schedule");
-      console.log("성공하셧습니다.");
-    },
-    onError: () => {
-      queryClient.invalidateQueries("schedule");
-      console.log("실패하셧습니다.");
-    },
-  });
-  const Delmurarion = useMutation(delSchedule, {
-    onSuccess: () => {
-      queryClient.invalidateQueries("schedule");
-      console.log("실패하셧습니다.");
-    },
-  });
-  const swichhander = (id, complete) => {
-    const swichbtn = {
-      id: id,
-      complete: !complete,
-    };
+  // const swichmurarion = useMutation(swichSchedule, {
+  //   onSuccess: () => {
+  //     queryClient.invalidateQueries("schedule");
+  //     console.log("성공하셧습니다.");
+  //   },
+  //   onError: () => {
+  //     queryClient.invalidateQueries("schedule");
+  //     console.log("실패하셧습니다.");
+  //   },
+  // });
+  // const Delmurarion = useMutation(delSchedule, {
+  //   onSuccess: () => {
+  //     queryClient.invalidateQueries("schedule");
+  //     console.log("실패하셧습니다.");
+  //   },
+  // });
+  // const swichhander = (id, complete) => {
+  //   const swichbtn = {
+  //     id: id,
+  //     complete: !complete,
+  //   };
 
-    swichmurarion.mutate(swichbtn);
-  };
+  //   swichmurarion.mutate(swichbtn);
+  // };
   const [openTab, setOpentab] = useState(1);
   const { isLoading, isError, data } = useQuery("schedule", () =>
     getDetail(id),
   );
-  console.log(data);
 
   if (isLoading) {
     return <h1>"성공했습니다!"</h1>;
@@ -53,15 +52,15 @@ function Detailleftbox() {
     return <h1>"오류입니다!"</h1>;
   }
 
-  const delBtn = (id) => {
-    if (window.confirm("삭제하시겠습니까?")) {
-      Delmurarion.mutate(id);
-      alert("삭제되었습니다.");
-    } else {
-      Delmurarion.mutate();
-      alert("취소되었습니다.");
-    }
-  };
+  // const delBtn = (id) => {
+  //   if (window.confirm("삭제하시겠습니까?")) {
+  //     Delmurarion.mutate(id);
+  //     alert("삭제되었습니다.");
+  //   } else {
+  //     Delmurarion.mutate();
+  //     alert("취소되었습니다.");
+  //   }
+  // };
   return (
     <Detaillbg>
       <TOPbox>
@@ -119,8 +118,8 @@ function Detailleftbox() {
                 <Card
                   state={item}
                   key={item.id}
-                  swichhander={swichhander}
-                  delBtn={delBtn}
+                  // swichhander={swichhander}
+                  // delBtn={delBtn}
                 />
               );
             } else {
@@ -131,9 +130,7 @@ function Detailleftbox() {
         <Allbox className={openTab === 2 ? "block" : "hidden"} id="link2">
           {data.map((item) => {
             if (!item.complete) {
-              return (
-                <Card state={item} key={item.id} swichhander={swichhander} />
-              );
+              return <Card state={item} key={item.id} />;
             } else {
               return null;
             }
@@ -142,9 +139,7 @@ function Detailleftbox() {
         <Allbox className={openTab === 3 ? "block" : "hidden"} id="link3">
           {data.map((item) => {
             if (item.complete) {
-              return (
-                <Card state={item} key={item.id} swichhander={swichhander} />
-              );
+              return <Card state={item} key={item.id} />;
             } else {
               return null;
             }
