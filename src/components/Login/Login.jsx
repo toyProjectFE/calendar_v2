@@ -13,8 +13,9 @@ import {
   SignUpBtn,
 } from "./styles";
 import { useMutation, useQueryClient } from "react-query";
-import { loginUser } from "../../api/api";
+import { loginUser } from "../../axios/api";
 import { useNavigate } from "react-router";
+import { setCookie } from "../../axios/cookies";
 
 function Login() {
   const [userId, setUserId] = useState("");
@@ -23,10 +24,15 @@ function Login() {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   const mutation = useMutation(loginUser, {
-    onSuccess: (data) => {
-      console.log("data", data);
+    onSuccess: (response) => {
+      // console.log(response.headers);
       queryClient.invalidateQueries("user");
+      setCookie("ACCESS_TOKEN", response.headers.authorization);
       navigate("/main");
+    },
+    onError: (response) => {
+      // console.log(response);
+      alert("로그인정보가 일치하지 않습니다.");
     },
   });
 
