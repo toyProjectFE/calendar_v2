@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "react-query";
 import { useParams } from "react-router";
-import { swichSchedule, getDetail, delSchedule } from "../../axios/api";
-import Card from "./Card";
+import {
+  swichTrueSchedule,
+  swichFalseSchedule,
+  getDetail,
+  delSchedule,
+} from "../../axios/api";
 
+import Modal from "./Modal";
 import {
   Allbox,
   Tapboxlink,
@@ -11,40 +16,87 @@ import {
   TOPbox,
   Detaillbg,
   Btnbox,
+  Content,
+  Title,
+  Button,
+  Allboxli,
 } from "./style";
 
 function Detailleftbox() {
   const { id } = useParams();
-  const queryClient = useQueryClient();
-  // const swichmurarion = useMutation(swichSchedule, {
-  //   onSuccess: () => {
-  //     queryClient.invalidateQueries("schedule");
-  //     console.log("성공하셧습니다.");
-  //   },
-  //   onError: () => {
-  //     queryClient.invalidateQueries("schedule");
-  //     console.log("실패하셧습니다.");
-  //   },
-  // });
-  // const Delmurarion = useMutation(delSchedule, {
-  //   onSuccess: () => {
-  //     queryClient.invalidateQueries("schedule");
-  //     console.log("실패하셧습니다.");
-  //   },
-  // });
-  // const swichhander = (id, complete) => {
-  //   const swichbtn = {
-  //     id: id,
-  //     complete: !complete,
-  //   };
+  const date = id;
+  //모달부분
+  const [ModalOpen, setModalOpen] = useState(false);
+  const ModalButton = (id) => {
+    setModalOpen(id);
+  };
+  const closeBtn = () => {
+    setModalOpen(false);
+  };
 
-  //   swichmurarion.mutate(swichbtn);
-  // };
+  const queryClient = useQueryClient();
+
+  
+
+  //true 스위치
+  const swichTrueMutation = useMutation(swichTrueSchedule, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("schedule");
+      console.log("성공하셧습니다.");
+    },
+    onError: () => {
+      queryClient.invalidateQueries("schedule");
+      console.log("실패하셧습니다.");
+    },
+  });
+  const swichTrueHander = (id) => {
+    const swichbtn = {
+      id: id,
+      complete: true,
+    };
+    swichTrueMutation.mutate(swichbtn);
+  };
+  //false 스위치
+  const swichFalseMurarion = useMutation(swichFalseSchedule, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("schedule");
+      console.log("성공하셧습니다.");
+    },
+    onError: () => {
+      queryClient.invalidateQueries("schedule");
+      console.log("실패하셧습니다.");
+    },
+  });
+
+  const swichfalseHander = (id) => {
+    const swichFalseBtn = {
+      id: id,
+      complete: false,
+    };
+    swichFalseMurarion.mutate(swichFalseBtn);
+  };
+
+  //삭제부분입니다.
+  const Delmurarion = useMutation(delSchedule, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("schedule");
+      console.log("성공하셧습니다.");
+    },
+  });
+  const delBtn = (id) => {
+    if (window.confirm("삭제하시겠습니까?")) {
+      Delmurarion.mutate({ date, id });
+      alert("삭제되었습니다.");
+    } else {
+      Delmurarion.mutate();
+      alert("취소되었습니다.");
+    }
+  };
+  //조회 부분입니다.
   const [openTab, setOpentab] = useState(1);
   const { isLoading, isError, data } = useQuery("schedule", () =>
-    getDetail(id),
+    getDetail(date)
   );
-
   if (isLoading) {
     return <h1>"성공했습니다!"</h1>;
   }
@@ -52,15 +104,6 @@ function Detailleftbox() {
     return <h1>"오류입니다!"</h1>;
   }
 
-  // const delBtn = (id) => {
-  //   if (window.confirm("삭제하시겠습니까?")) {
-  //     Delmurarion.mutate(id);
-  //     alert("삭제되었습니다.");
-  //   } else {
-  //     Delmurarion.mutate();
-  //     alert("취소되었습니다.");
-  //   }
-  // };
   return (
     <Detaillbg>
       <TOPbox>
@@ -76,7 +119,7 @@ function Detailleftbox() {
               href="#link1"
               role="tablist"
             >
-              All
+              Incomplete
             </Tapboxlink>
           </Tapboxli>
           <Tapboxli>
@@ -87,40 +130,65 @@ function Detailleftbox() {
                 setOpentab(2);
               }}
               data-toggle="tab"
-              href="#link1"
-              role="tablist"
-            >
-              Incomplete
-            </Tapboxlink>
-          </Tapboxli>
-          <Tapboxli>
-            <Tapboxlink
-              className={openTab === 3 ? "Textcolor01" : "Textcolor02"}
-              onClick={(e) => {
-                e.preventDefault();
-                setOpentab(3);
-              }}
-              data-toggle="tab"
-              href="#link1"
+              href="#link2"
               role="tablist"
             >
               Complete
             </Tapboxlink>
           </Tapboxli>
         </Allbox>
-        {/* //<p>20/30</p> */}
       </TOPbox>
       <Btnbox>
         <Allbox className={openTab === 1 ? "block" : "hidden"} id="link1">
           {data.map((item) => {
-            if (!item.complete || item.complete) {
+            if (!item.complete) {
               return (
-                <Card
-                  state={item}
-                  key={item.id}
-                  // swichhander={swichhander}
-                  // delBtn={delBtn}
-                />
+                <Allboxli key={item.id}>
+                  <Button
+                    onClick={() => swichTrueHander(item.id, item.complete)}
+                  >
+                    <svg
+                      width="12"
+                      height="9"
+                      viewBox="0 0 12 9"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect
+                        x="4.24265"
+                        y="8.48528"
+                        width="6"
+                        height="2"
+                        transform="rotate(-135 4.24265 8.48528)"
+                        fill="white"
+                      />
+                      <rect
+                        x="2.82843"
+                        y="7.07108"
+                        width="10"
+                        height="2"
+                        transform="rotate(-45 2.82843 7.07108)"
+                        fill="white"
+                      />
+                    </svg>
+                  </Button>
+                  <div onClick={() => ModalButton(item.id)}>
+                    <p>작성자 : {item.author}</p>
+                    <div>
+                      <Title>{item.title}</Title>
+                      <Content>{item.contents}</Content>
+                    </div>
+                  </div>
+                  {ModalOpen === item.id && (
+                    <Modal
+                      setModalopen={setModalOpen}
+                      item={item}
+                      delBtn={delBtn}
+                      closeBtn={closeBtn}
+                      date={date}
+                    />
+                  )}
+                </Allboxli>
               );
             } else {
               return null;
@@ -129,17 +197,55 @@ function Detailleftbox() {
         </Allbox>
         <Allbox className={openTab === 2 ? "block" : "hidden"} id="link2">
           {data.map((item) => {
-            if (!item.complete) {
-              return <Card state={item} key={item.id} />;
-            } else {
-              return null;
-            }
-          })}
-        </Allbox>
-        <Allbox className={openTab === 3 ? "block" : "hidden"} id="link3">
-          {data.map((item) => {
             if (item.complete) {
-              return <Card state={item} key={item.id} />;
+              return (
+                <Allboxli key={item.id} className="on">
+                  <Button
+                    onClick={() => swichfalseHander(item.id, item.complete)}
+                  >
+                    <svg
+                      width="12"
+                      height="9"
+                      viewBox="0 0 12 9"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect
+                        x="4.24265"
+                        y="8.48528"
+                        width="6"
+                        height="2"
+                        transform="rotate(-135 4.24265 8.48528)"
+                        fill="white"
+                      />
+                      <rect
+                        x="2.82843"
+                        y="7.07108"
+                        width="10"
+                        height="2"
+                        transform="rotate(-45 2.82843 7.07108)"
+                        fill="white"
+                      />
+                    </svg>
+                  </Button>
+                  <div onClick={() => ModalButton(item.id)}>
+                    <Content>작성자 : {item.author}</Content>
+                    <div>
+                      <Title>{item.title}</Title>
+                      <Content>{item.contents}</Content>
+                    </div>
+                  </div>
+                  {ModalOpen === item.id && (
+                    <Modal
+                      setModalopen={setModalOpen}
+                      item={item}
+                      delBtn={delBtn}
+                      closeBtn={closeBtn}
+                      date={date}
+                    />
+                  )}
+                </Allboxli>
+              );
             } else {
               return null;
             }

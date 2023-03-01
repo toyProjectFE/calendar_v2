@@ -1,6 +1,6 @@
 import instance from "./instance";
-import axios from "axios";
-import { getCookie } from "./cookies";
+//import axios from "axios";
+//import { getCookie } from "./cookies";
 const getMemo = async () => {
   const response = await instance.get(`/memo`);
   return response.data;
@@ -24,13 +24,12 @@ const addDate = async (newDate) => {
 };
 
 //조회 디테일
-const getDetail = async (id) => {
-  const response = await instance.get(`/date/${id}`);
+const getDetail = async (date) => {
+  const response = await instance.get(`/date/${date}`);
   return response.data;
 };
 
 //생성 디테일
-
 const addSchedule = async ({ id, newSchedule }) => {
   await instance.post(`/date/${id}`, newSchedule);
 };
@@ -58,15 +57,27 @@ const addSchedule = async ({ id, newSchedule }) => {
 //     },
 //   });
 // };
+
 //삭제 디테일
-const delSchedule = async (id) => {
-  await instance.delete(`/data/${id}`);
+const delSchedule = async ({date,id}) => {
+  console.log(date)
+  await instance.delete(`/date/${date}/${id}`);
 };
-//트루펄스 디테일
-const swichSchedule = async (payload) => {
-  await instance.patch(`/data/schedule/${payload.id}`, {
-    complete: payload.complete,
-  });
+//true 디테일
+const swichTrueSchedule = async (swichbtn) => {
+  //console.log(swichbtn)
+  await instance.patch(`/date/schedule/complete/${swichbtn.id}`,swichbtn);
+};
+//false 디테일
+const swichFalseSchedule = async (swichFalseBtn) => {
+  //console.log(swichFalseBtn)
+  await instance.patch(`/date/schedule/cancel/${swichFalseBtn.id}`,swichFalseBtn);
+};
+
+//수정 디테일
+const reTouchSchedule = async ({date,reTouch}) => {
+  console.log(reTouch)
+  await instance.put(`/date/${date}/${reTouch.id}`,reTouch);
 };
 
 //조회 디테일
@@ -112,9 +123,11 @@ export {
   addSchedule,
   removeSchedule,
   getDetail,
-  swichSchedule,
+  swichTrueSchedule,
+  swichFalseSchedule,
   delSchedule,
   addDate,
   addUser,
   loginUser,
+  reTouchSchedule
 };

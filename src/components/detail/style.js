@@ -72,6 +72,7 @@ const Allboxli = styled.li`
   padding: 25px;
   box-sizing: border-box;
   position: relative;
+  cursor: pointer;
   &:nth-child(4n) {
     margin-right: 0;
   }
@@ -80,6 +81,14 @@ const Allboxli = styled.li`
   }
   &:hover {
     border: 1px solid #c650f0;
+  }
+  &.on, .on:hover{
+    background:#f8f8f8;
+    color:#e2e2e2;
+    border: 1px solid #f8f8f8;
+  }
+  &.on > Button{
+    background:#e2e2e2
   }
 `;
 
@@ -95,9 +104,6 @@ const Button = styled.button`
   top: 20px;
   cursor: pointer;
   &:hover {
-    background: #c650f0;
-  }
-  &.on {
     background: #c650f0;
   }
 `;
@@ -119,7 +125,6 @@ const Content = styled.p`
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  color: #555;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 `;
@@ -239,7 +244,9 @@ const Modalcon = styled.div`
   padding: 40px 40px;
   overflow: hidden;
 `;
-
+const Modalp = styled.p`
+color:#1d1d1d
+`
 const Modaltitle = styled.em`
   display: block;
   font-size: 18px;
@@ -247,6 +254,7 @@ const Modaltitle = styled.em`
   font-weight: 500;
   margin: 20px 0;
   border-top: 1px solid #eee;
+  color:#1d1d1d;
   padding-top: 25px;
 `;
 const Modalbtnwrap = styled.div`
@@ -314,4 +322,5 @@ export {
   Modalbtn1,
   Modalbtn2,
   Modalbtn3,
+  Modalp
 };
