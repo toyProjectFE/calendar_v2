@@ -147,6 +147,7 @@ function Detailleftbox() {
                   <Button
                     onClick={() => swichTrueHander(item.id, item.complete)}
                   >
+                    
                     <svg
                       width="12"
                       height="9"
@@ -199,7 +200,7 @@ function Detailleftbox() {
           {data.map((item) => {
             if (item.complete) {
               return (
-                <Allboxli key={item.id} className="on">
+                <Allboxli key={item.id} >
                   <Button
                     onClick={() => swichfalseHander(item.id, item.complete)}
                   >

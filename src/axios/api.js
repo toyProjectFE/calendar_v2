@@ -34,38 +34,16 @@ const addSchedule = async ({ id, newSchedule }) => {
   await instance.post(`/date/${id}`, newSchedule);
 };
 
-// const addSchedule = async (id, newSchedule) => {
-//   await axios({
-//     url: `http://15.164.158.158:8080/date/${id}`,
-//     method: "post",
-//     data: {
-//       title: newSchedule.title,
-//       author: newSchedule.author,
-//       contents: newSchedule.contents,
-//     },
-//   })
-//     .then((response) => console.log(response))
-//     .catch((error) => console.log(error));
-// };
 
-//  title error ???   ㅌ
-// const accessToken = getCookie("ACCESS_TOKEN");
-// const addSchedule = async (id, newSchedule) => {
-//   await axios.post(`/date/${id}`, newSchedule, {
-//     headers: {
-//       Authorization: accessToken,
-//     },
-//   });
-// };
 
 //삭제 디테일
 const delSchedule = async ({date,id}) => {
-  console.log(date)
+  //console.log(date)
   await instance.delete(`/date/${date}/${id}`);
 };
 //true 디테일
 const swichTrueSchedule = async (swichbtn) => {
-  //console.log(swichbtn)
+  console.log(swichbtn)
   await instance.patch(`/date/schedule/complete/${swichbtn.id}`,swichbtn);
 };
 //false 디테일
@@ -80,35 +58,6 @@ const reTouchSchedule = async ({date,reTouch}) => {
   await instance.put(`/date/${date}/${reTouch.id}`,reTouch);
 };
 
-//조회 디테일
-// const getDetail = async () => {
-//   const response = await axios.get( `${process.env.REACT_APP_SERVER_URL}/schedule` );
-//   return response.data;
-// };
-
-// //생성 디테일
-// const addSchedule = async (newSchedule) => {
-//   await axios.post(`${process.env.REACT_APP_SERVER_URL}/schedule`, newSchedule);
-// };
-// //삭제 디테일
-// const delSchedule = async (id) => {
-//   await axios.delete(`${process.env.REACT_APP_SERVER_URL}/schedule/${id}`);
-// };
-// //트루펄스 디테일
-// const swichSchedule = async (payload) => {
-//   await axios.patch(`${process.env.REACT_APP_SERVER_URL}/schedule/${payload.id}`,{
-//     complete: payload.complete
-//   });
-// };
-
-const removeDate = async (id) => {
-  await instance.delete(`${process.env.REACT_APP_SERVER_URL}/schedule/${id}`);
-};
-const removeSchedule = async (id, postId) => {
-  await instance.delete(
-    `${process.env.REACT_APP_SERVER_URL}/schedule/${id}/${postId}`,
-  );
-};
 
 const addUser = async (newUser) => {
   return await instance.post(`/user/signup`, newUser);
@@ -121,7 +70,6 @@ const loginUser = async (newUser) => {
 export {
   getSchedules,
   addSchedule,
-  removeSchedule,
   getDetail,
   swichTrueSchedule,
   swichFalseSchedule,
