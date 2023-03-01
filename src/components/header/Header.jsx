@@ -3,7 +3,6 @@ import { Headerwrap, Link2, Right, Button } from "./style";
 import { removeCookie } from "../../axios/cookies";
 function Header() {
   // const removeCookies = removeCookie("ACCESS_TOKEN");
-
   return (
     <Headerwrap>
       <Link2 to="/Main">Calendar</Link2>
