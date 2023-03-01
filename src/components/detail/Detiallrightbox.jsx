@@ -64,7 +64,6 @@ function Detiallrightbox() {
     };
 
     mutation.mutate({ id, newSchedule });
-
     setAuthor("");
     setTitle("");
     setContents("");

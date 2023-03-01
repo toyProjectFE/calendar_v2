@@ -16,7 +16,6 @@ instance.interceptors.request.use(
   function (config) {
     // 토큰을 요청이 시작될 때 가져옴
     const accessToken = getCookie("ACCESS_TOKEN");
-    console.log("토큰 보내지냐", accessToken);
     // 요청 config headers에 토큰을 넣어 줌
     config.headers["Authorization"] = accessToken;
     return config;
@@ -31,7 +30,6 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
   //서버로부터 정상 응답을 받는 경우
   function (config) {
-    console.log("데이터 수신 완료");
     const accessToken = getCookie("ACCESS_TOKEN");
     config.headers["Authorization"] = accessToken;
 
