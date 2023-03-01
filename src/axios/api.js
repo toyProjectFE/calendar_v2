@@ -1,15 +1,7 @@
 import instance from "./instance";
 //import axios from "axios";
 //import { getCookie } from "./cookies";
-const getMemo = async () => {
-  const response = await instance.get(`/memo`);
-  return response.data;
-};
 
-const postMemo = async () => {
-  const response = await instance.post(`/memo`);
-  return response.data;
-};
 
 const getSchedules = async () => {
   const response = await instance.get(`/data`);
@@ -48,7 +40,7 @@ const swichTrueSchedule = async (swichbtn) => {
 };
 //false 디테일
 const swichFalseSchedule = async (swichFalseBtn) => {
-  //console.log(swichFalseBtn)
+  console.log(swichFalseBtn)
   await instance.patch(`/date/schedule/cancel/${swichFalseBtn.id}`,swichFalseBtn);
 };
 
