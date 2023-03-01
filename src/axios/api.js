@@ -32,9 +32,6 @@ const getDetail = async (id) => {
 //생성 디테일
 
 const addSchedule = async ({ id, newSchedule }) => {
-  console.log(id);
-  console.log(newSchedule);
-
   await instance.post(`/date/${id}`, newSchedule);
 };
 

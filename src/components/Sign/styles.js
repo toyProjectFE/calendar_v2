@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 const MainContainer = styled.div`
   display: flex;
   height: 2000px;
@@ -21,7 +20,6 @@ const FormContainer = styled.div`
   /* align-items: center; */
   margin-top: 20px;
 `;
-
 const ArgeeContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -57,6 +55,22 @@ function LabledInput({ id, label, placeholder, value, onChange }) {
     </StyledContainer>
   );
 }
+function BtnLabledInput({ id, label, placeholder, value, onChange, onClick }) {
+  return (
+    <StyledContainer>
+      <StyledLabel htmlFor={id}>{label}</StyledLabel>
+      <StyledInput
+        id={id}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+      />
+      <BtnCheck type="button" onClick={onClick}>
+        중복확인
+      </BtnCheck>
+    </StyledContainer>
+  );
+}
 const StyledContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -64,7 +78,6 @@ const StyledContainer = styled.div`
   align-items: center;
   margin-bottom: 10px;
 `;
-
 const StyledInput = styled.input`
   height: 30px;
   width: 300px;
@@ -74,18 +87,15 @@ const StyledInput = styled.input`
   margin-right: 25px;
   border: 1px solid #e5e5e5;
 `;
-
 const StyledLabel = styled.label`
   margin-right: 10px;
   font-weight: 700;
-
   height: 45px;
   width: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
 `;
-
 const CheckInputContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -109,8 +119,18 @@ const BtnCheck = styled.button`
     background-color: #e5e5e5;
   }
 `;
-
+const CheckTitle = styled.div`
+  font-size: 10px;
+  font-weight: 600;
+  color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2px;
+  margin-right: 150px;
+`;
 export {
+  CheckTitle,
   MainContainer,
   FormContainer,
   ArgeeContainer,
@@ -121,4 +141,5 @@ export {
   LabledInput,
   CheckInputContainer,
   BtnCheck,
+  BtnLabledInput,
 };

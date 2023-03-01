@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  CheckTitle,
   MainContainer,
   FormContainer,
   ArgeeContainer,
@@ -10,6 +11,7 @@ import {
   LabledInput,
   CheckInputContainer,
   BtnCheck,
+  BtnLabledInput,
 } from "./styles";
 
 import { useMutation, useQueryClient } from "react-query";
@@ -55,7 +57,6 @@ function Sign() {
 
   const handleSubmitButtonClick = async (event) => {
     event.preventDefault();
-
     const newUser = {
       username: userName,
       email: userId,
@@ -70,18 +71,17 @@ function Sign() {
         <TitleContainer>
           <SignTitle>회원가입</SignTitle>
         </TitleContainer>
-
         <form onSubmit={handleSubmitButtonClick}>
           <FormContainer>
             <CheckInputContainer>
-              <LabledInput
+              <BtnLabledInput
                 id="userId"
                 label="아이디"
                 placeholder="제목을 입력해주세요."
                 value={userId}
                 onChange={handleUserIdChange}
+                // onClick={handleCheckButtonClick}
               />
-              <BtnCheck>중복확인</BtnCheck>
             </CheckInputContainer>
             <CheckInputContainer>
               <LabledInput
@@ -92,7 +92,6 @@ function Sign() {
                 onChange={handleUserPwChange}
               />
             </CheckInputContainer>
-
             <LabledInput
               id="userPwCheck"
               label="비밀번호확인"
@@ -100,19 +99,22 @@ function Sign() {
               value={userPwCheck}
               onChange={handleUserPwCheckChange}
             />
-
+            {/* 비밀번호와 비밀번호 확인이 일치하지 않을 때 */}
+            {userPw !== userPwCheck && (
+              <CheckTitle>
+                비밀번호와 비밀번호 확인이 일치하지 않습니다.
+              </CheckTitle>
+            )}
             <CheckInputContainer>
               <LabledInput
                 id="userName"
                 label="닉네임"
-                placeholder="닉네임 한번 더 입력해주세요."
+                placeholder="닉네임을 입력해주세요."
                 value={userName}
                 onChange={handleUserNameCheckChange}
               />
-              <BtnCheck>중복확인</BtnCheck>
             </CheckInputContainer>
           </FormContainer>
-
           <ArgeeContainer>
             <span>이용약관동의</span>
             <CheckContainer>
@@ -126,7 +128,6 @@ function Sign() {
               </div>
             </CheckContainer>
           </ArgeeContainer>
-
           <button type="submit">가입하기</button>
         </form>
       </FlexConatainer>
