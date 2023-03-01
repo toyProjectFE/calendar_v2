@@ -9,8 +9,6 @@ function Card({ state, swichhander, delBtn }) {
   const closeBtn = () => {
     setModalOpen(false);
   };
-
-  // fatchBtn, cancelBtn, retouchBtn;
   return (
     <Allboxli key={state.id}>
       <Button onClick={() => swichhander(state.id, state.complete)}>

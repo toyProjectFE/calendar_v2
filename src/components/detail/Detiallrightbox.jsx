@@ -18,7 +18,7 @@ function Detiallrightbox() {
   const queryClient = useQueryClient();
   const mutation = useMutation(addSchedule, {
     onSuccess: (response) => {
-      console.log(response);
+      //console.log(response);
       queryClient.invalidateQueries("schedule");
       console.log("성공하였습니다.");
     },
@@ -61,6 +61,7 @@ function Detiallrightbox() {
       author: author,
       contents: contents,
       date: id,
+      
     };
 
     mutation.mutate({ id, newSchedule });

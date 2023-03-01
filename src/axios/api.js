@@ -1,15 +1,14 @@
 import instance from "./instance";
-import axios from "axios";
-import { getCookie } from "./cookies";
-const getMemo = async () => {
-  const response = await instance.get(`/memo`);
-  return response.data;
-};
 
-const postMemo = async () => {
-  const response = await instance.post(`/memo`);
-  return response.data;
-};
+// const getMemo = async () => {
+//   const response = await instance.get(`/memo`);
+//   return response.data;
+// };
+
+// const postMemo = async () => {
+//   const response = await instance.post(`/memo`);
+//   return response.data;
+// };
 
 const getSchedules = async () => {
   const response = await instance.get(`/data`);
@@ -24,8 +23,8 @@ const addDate = async (newDate) => {
 };
 
 //조회 디테일
-const getDetail = async (id) => {
-  const response = await instance.get(`/date/${id}`);
+const getDetail = async (date) => {
+  const response = await instance.get(`/date/${date}`);
   return response.data;
 };
 
@@ -35,22 +34,29 @@ const addSchedule = async ({ id, newSchedule }) => {
 };
 
 //삭제 디테일
-const delSchedule = async ({ id, postId }) => {
-  await instance.delete(`/data/${id}/${postId}`);
+const delSchedule = async ({ date, id }) => {
+  console.log(date);
+  await instance.delete(`/date/${date}/${id}`);
 };
-//트루펄스 디테일
-const swichSchedule = async (payload) => {
-  await instance.patch(`/data/schedule/${payload.id}`, {
-    complete: payload.complete,
-  });
+//true 디테일
+const swichTrueSchedule = async (swichbtn) => {
+  await instance.patch(`/date/schedule/complete/${swichbtn.id}`, swichbtn);
 };
-
-const removeSchedule = async (id, postId) => {
-  await instance.delete(
-    `${process.env.REACT_APP_SERVER_URL}/schedule/${id}/${postId}`,
+//false 디테일
+const swichFalseSchedule = async (swichFalseBtn) => {
+  await instance.patch(
+    `/date/schedule/cancel/${swichFalseBtn.id}`,
+    swichFalseBtn,
   );
 };
 
+//수정 디테일
+const reTouchSchedule = async ({ date, reTouch }) => {
+  console.log(reTouch);
+  await instance.put(`/date/${date}/${reTouch.id}`, reTouch);
+};
+
+//////////////////로그인 api  ///////////////
 const addUser = async (newUser) => {
   return await instance.post(`/user/signup`, newUser);
 };
@@ -66,12 +72,13 @@ const loginUser = async (newUser) => {
 export {
   getSchedules,
   addSchedule,
-  removeSchedule,
   getDetail,
-  swichSchedule,
+  swichTrueSchedule,
+  swichFalseSchedule,
   delSchedule,
   addDate,
   addUser,
   loginUser,
   getLoginUser,
+  reTouchSchedule,
 };

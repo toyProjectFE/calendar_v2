@@ -77,7 +77,7 @@ const Col = styled.div`
     border-top: 0;
     padding: 15px 15px;
     box-sizing: border-box;
-    font-size: 14px;
+    font-size: 16px;
     cursor: pointer;
   }
   &.col:first-child {
@@ -86,8 +86,9 @@ const Col = styled.div`
   &.col:last-child {
     color: #0038ff;
   }
-  &.disabled {
-    color: #bcbcbc !important;
+  &.disabled,.disabled:hover {
+    color: #ebebeb !important;
+    background: #FBFBFB !important;
   }
   &.selected {
     background: #f7f7f7;
