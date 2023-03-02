@@ -1,10 +1,9 @@
+import { combineReducers, createStore } from "redux";
+import kakaoLogin from "../modules/kakaoLogin";
 
-import { combineReducers, createStore } from 'redux'
-import cal from '../modules/cal'
 const rootReducer = combineReducers({
-    cal:cal
-})
-const store = createStore(rootReducer)
+  kakaoLogin: kakaoLogin,
+});
+const store = createStore(rootReducer);
 
-
-export default store
+export default store;

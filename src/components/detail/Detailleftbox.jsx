@@ -36,8 +36,6 @@ function Detailleftbox() {
 
   const queryClient = useQueryClient();
 
-  
-
   //true 스위치
   const swichTrueMutation = useMutation(swichTrueSchedule, {
     onSuccess: () => {
@@ -95,7 +93,7 @@ function Detailleftbox() {
   //조회 부분입니다.
   const [openTab, setOpentab] = useState(1);
   const { isLoading, isError, data } = useQuery("schedule", () =>
-    getDetail(date)
+    getDetail(date),
   );
   if (isLoading) {
     return <h1>"성공했습니다!"</h1>;
