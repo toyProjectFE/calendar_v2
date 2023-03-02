@@ -12,7 +12,7 @@ import {
 import { useMutation, useQueryClient } from "react-query";
 import { addUser, checkUser } from "../../axios/api";
 import { useNavigate } from "react-router";
-
+import bonobono from "../Login/bonobono.jpeg";
 function Sign() {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
@@ -136,7 +136,7 @@ function Sign() {
           <LoginBtn type="submit">가입하기</LoginBtn>
         </form>
       </StyledDiv>
-      <Liha>동영상이지롱</Liha>
+      <img src={bonobono}></img>
     </MainContainer>
   );
 }
