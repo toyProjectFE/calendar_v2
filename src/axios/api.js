@@ -61,6 +61,10 @@ const addUser = async (newUser) => {
   return await instance.post(`/user/signup`, newUser);
 };
 
+const kakaoToken = async (kakaoLogin) => {
+  return await instance.post(`/kakao/login`, kakaoLogin);
+};
+
 const getLoginUser = async () => {
   return await instance.get(`/user/login`);
 };
@@ -81,4 +85,5 @@ export {
   loginUser,
   getLoginUser,
   reTouchSchedule,
+  kakaoToken,
 };

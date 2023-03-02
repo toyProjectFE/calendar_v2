@@ -16,6 +16,7 @@ import { useMutation, useQueryClient } from "react-query";
 import { loginUser } from "../../axios/api";
 import { useNavigate } from "react-router";
 import { setCookie } from "../../axios/cookies";
+import { REST_API_KEY, REDIRECT_URI } from "./kakaologindata";
 
 function Login() {
   const [userId, setUserId] = useState("");
@@ -56,6 +57,14 @@ function Login() {
   const gotoSignUp = () => {
     navigate("/sign");
   };
+
+  const KAKAO_AUTH_URI = `https://kauth.kakao.com/oauth/authorize?client_id=94c5891ab6cec1f5eddede64f8358dd9&redirect_uri=http:localhost:3000&response_type=code`;
+
+  const loginHandler = () => {
+    let sibal = new URL(window.location.href).searchParams.get("code");
+    console.log(sibal);
+    window.location.href = KAKAO_AUTH_URI; // url 주소 변경
+  };
   return (
     <MainContainer>
       <StyledDiv>
@@ -78,7 +87,7 @@ function Login() {
               onChange={handleUserPwChange}
             />
             <LoginBtn>Login</LoginBtn>
-            <LoginBtnKaKAo>kakao Login</LoginBtnKaKAo>
+            <LoginBtnKaKAo onClick={loginHandler}>kakao Login</LoginBtnKaKAo>
 
             <DivContainer>
               <span>아직 회원 아님?</span>
