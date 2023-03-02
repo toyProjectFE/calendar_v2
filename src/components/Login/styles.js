@@ -76,7 +76,7 @@ const DivContainer = styled.div`
   align-items: center;
   width: 100%;
   margin-top:15px;
-`;
+`
 
 const Liha = styled.div`
   display: flex;
@@ -89,6 +89,7 @@ const Liha = styled.div`
 `;
 
 const SignUpBtn = styled.button`
+
   color:#1d1d1d;
   background:none;
   cursor: pointer;
@@ -125,6 +126,7 @@ const Snslogin = styled.p`
     position: absolute;
   }
 `
+
 export {
   LoginTitle,
   Liha,
@@ -136,4 +138,5 @@ export {
   DivContainer,
   SignUpBtn,
   Snslogin
+
 };

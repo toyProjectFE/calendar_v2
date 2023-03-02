@@ -10,12 +10,12 @@ import {
   DivContainer,
   SignUpBtn,
   Snslogin,
+  Snslogin,
 } from "./styles";
 import { useMutation, useQueryClient } from "react-query";
 import { loginUser } from "../../axios/api";
 import { useNavigate } from "react-router";
 import { setCookie } from "../../axios/cookies";
-import { REST_API_KEY, REDIRECT_URI } from "./kakaologindata";
 
 function Login() {
   const [userId, setUserId] = useState("");
@@ -28,6 +28,7 @@ function Login() {
       // console.log(response.headers);
       queryClient.invalidateQueries("user");
       setCookie("ACCESS_TOKEN", response.headers.authorization);
+      localStorage.setItem("name", response.data.username);
       console.log(response.data.username);
       navigate("/main");
     },
@@ -69,6 +70,7 @@ function Login() {
       <StyledDiv>
         <LoginTitle>Login</LoginTitle>
         <form onSubmit={handleSubmitButtonClick}>
+
             <IdInput
               id="userId"
               placeholder="아이디를 입력해주세요."
@@ -91,6 +93,7 @@ function Login() {
             </DivContainer>
             <Snslogin>소셜로그인</Snslogin>
             <LoginBtnKaKAo onClick={loginHandler}>kakao Login</LoginBtnKaKAo>
+
         </form>
       </StyledDiv>
       <Liha>동영상이지롱</Liha>

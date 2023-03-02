@@ -1,5 +1,14 @@
 import React, { useState } from "react";
+import { CheckTitle, Signbox, Signlabel, Signbtn } from "./styles";
+
 import {
+  LoginTitle,
+  StyledDiv,
+  Liha,
+  MainContainer,
+  LoginBtn,
+  IdInput,
+} from "../Login/styles";
   CheckTitle,
   Signbox,
   Signlabel,

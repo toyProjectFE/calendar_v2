@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-
-
 const Signbox = styled.li`
   display: flex;
   align-items: center;

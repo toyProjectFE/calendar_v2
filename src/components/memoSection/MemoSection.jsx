@@ -1,10 +1,24 @@
 import React, { useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { useQuery, useMutation, useQueryClient } from "react-query";
+import { getMemo, postMemo, deleteMemo } from "../../axios/api";
+import { IdInput, Btn, Label } from "./style";
 import { useQuery, useMutation, useQueryClient } from "react-query";
 import { getMemo, postMemo, deleteMemo } from "../../axios/api";
 import { IdInput, Btn, Label } from "./style";
 
 const MemoSection = () => {
+
+  // useEffect(() => {
+  //   instance.get(`/schedule/memo`).then((res) =>
+  //     res.data.map((e) => {
+  //       <li>{e.content}</li>;
+  //     }),
+  //   );
+  // });
+
+
   const { data } = useQuery("memo", getMemo);
   const queryClient = useQueryClient();
   const mutation = useMutation(postMemo, {
@@ -69,39 +83,40 @@ const MemoSection = () => {
 export default MemoSection;
 
 const Section = styled.div`
-width: 15.62%;
-padding: 20px;
-display: flex;
-flex-direction: column;
-justify-content: flex-start;
-height: 98vh;
+
+  width: 15.62%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 98vh;
 `;
 const Ul = styled.ul`
-margin-top: 50px;
-display: flex;
-flex-direction: column;
-gap: 20px;
-width: 100%;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
 `;
 
 const Li = styled.li`
-font-size: 1rem;
-width: 100%;
-display: flex;
-justify-content: flex-start;
-gap: 20px;
+  font-size: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
 `;
 
 const DeleteBtn = styled.button`
-border-radius: 5px;
-box-sizing: border-box;
-background-color: rgb(199, 80, 240);
-color: #fff;
-font-weight: 600;
-cursor: pointer;
-text-align: center;
-outline: 0;
-border: 0;
-width: 15%;
-`;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: rgb(199, 80, 240);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  outline: 0;
+  border: 0;
+  width: 15%;
+`
 

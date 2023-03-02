@@ -1,5 +1,6 @@
 import styled from "styled-components";
 const IdInput = styled.input`
+
 width: 100%;
 height: 50px;
 background: #f8f8f8;

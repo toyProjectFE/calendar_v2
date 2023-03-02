@@ -1,6 +1,7 @@
 import instance from "./instance";
 
 const getMemo = async () => {
+
 const response = await instance.get(`/schedule/memo`);
 return response.data;
 };
@@ -10,8 +11,7 @@ await instance.post(`/schedule/memo`, newMemo);
 };
 const deleteMemo = async (id) => {
 await instance.delete(`/schedule/memo/${id}`);
-};
-
+}
 const getSchedules = async () => {
   const response = await instance.get(`/data`);
   return response.data;
@@ -37,7 +37,6 @@ const addSchedule = async ({ id, newSchedule }) => {
 
 //삭제 디테일
 const delSchedule = async ({ date, id }) => {
-  console.log(date);
   await instance.delete(`/date/${date}/${id}`);
 };
 //true 디테일
@@ -95,5 +94,7 @@ export {
   reTouchSchedule,
   kakaoToken,
   checkUser,
+
 getMemo,postMemo,deleteMemo
+
 };
