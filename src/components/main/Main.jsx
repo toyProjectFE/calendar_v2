@@ -174,8 +174,6 @@ const Main = () => {
     console.log(setSelectedDate(day));
   };
 
-  // const { isLoading, isError, data } = useQuery("schedules", getSchedules);
-
   return (
     <>
       <Calendar>

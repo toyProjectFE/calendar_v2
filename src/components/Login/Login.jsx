@@ -8,15 +8,13 @@ import {
   LoginBtn,
   LoginBtnKaKAo,
   DivContainer,
-  FormContainer,
-  LabledInput,
   SignUpBtn,
+  Snslogin,
 } from "./styles";
 import { useMutation, useQueryClient } from "react-query";
 import { loginUser } from "../../axios/api";
 import { useNavigate } from "react-router";
 import { setCookie } from "../../axios/cookies";
-import { REST_API_KEY, REDIRECT_URI } from "./kakaologindata";
 
 function Login() {
   const [userId, setUserId] = useState("");
@@ -29,6 +27,7 @@ function Login() {
       // console.log(response.headers);
       queryClient.invalidateQueries("user");
       setCookie("ACCESS_TOKEN", response.headers.authorization);
+      localStorage.setItem("name", response.data.username);
       console.log(response.data.username);
       navigate("/main");
     },
@@ -70,30 +69,28 @@ function Login() {
       <StyledDiv>
         <LoginTitle>Login</LoginTitle>
         <form onSubmit={handleSubmitButtonClick}>
-          <FormContainer>
-            <LabledInput
-              id="userId"
-              label="아이디"
-              placeholder="아이디를 입력해주세요."
-              value={userId}
-              onChange={handleUserIdChange}
-            />
+          <IdInput
+            id="userId"
+            placeholder="아이디를 입력해주세요."
+            value={userId}
+            onChange={handleUserIdChange}
+            type="text"
+          />
 
-            <LabledInput
-              id="userPw"
-              label="비밀번호"
-              placeholder="비밀번호를 입력해주세요."
-              value={userPw}
-              onChange={handleUserPwChange}
-            />
-            <LoginBtn>Login</LoginBtn>
-            <LoginBtnKaKAo onClick={loginHandler}>kakao Login</LoginBtnKaKAo>
-
-            <DivContainer>
-              <span>아직 회원 아님?</span>
-              <SignUpBtn onClick={gotoSignUp}>회원가입</SignUpBtn>
-            </DivContainer>
-          </FormContainer>
+          <IdInput
+            id="userPw"
+            placeholder="비밀번호를 입력해주세요."
+            value={userPw}
+            onChange={handleUserPwChange}
+            type="password"
+          />
+          <LoginBtn>Login</LoginBtn>
+          <DivContainer>
+            <span>아직 회원이 아니신가요?</span>
+            <SignUpBtn onClick={gotoSignUp}>회원가입</SignUpBtn>
+          </DivContainer>
+          <Snslogin>소셜로그인</Snslogin>
+          <LoginBtnKaKAo onClick={loginHandler}>kakao Login</LoginBtnKaKAo>
         </form>
       </StyledDiv>
       <Liha>동영상이지롱</Liha>

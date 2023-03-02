@@ -76,7 +76,7 @@ function Modal({ item, delBtn, closeBtn, date }) {
         <Modalcon style={{ zIndex: 1 }}>
           <Input
             type="text"
-            placeholder="작성자명을 적어주세요"
+            placeholder="작성자명을 일치시켜주세요"
             onChange={authorHandlerChange}
             value={authorChange}
             maxLength="20"
