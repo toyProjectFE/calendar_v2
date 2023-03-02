@@ -47,7 +47,7 @@ const swichTrueSchedule = async (swichbtn) => {
 const swichFalseSchedule = async (swichFalseBtn) => {
   await instance.patch(
     `/date/schedule/cancel/${swichFalseBtn.id}`,
-    swichFalseBtn,
+    swichFalseBtn
   );
 };
 
@@ -95,4 +95,5 @@ export {
   getMemo,
   postMemo,
   deleteMemo,
+
 };

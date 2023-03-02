@@ -108,6 +108,27 @@ function Sign() {
           <Signbox>
             <Signlabel htmlFor="userPwCheck">비밀번호확인</Signlabel>
             <IdInput
+          <FormContainer>
+            <CheckInputContainer>
+              <BtnLabledInput
+                id="userId"
+                label="아이디"
+                placeholder="제목을 입력해주세요."
+                value={userId}
+                onChange={handleUserIdChange}
+                onClick={handleCheckButtonClick}
+              />
+            </CheckInputContainer>
+            <CheckInputContainer>
+              <LabledInput
+                id="userPw"
+                label="비밀번호"
+                placeholder="비밀번호를 입력해주세요."
+                value={userPw}
+                onChange={handleUserPwChange}
+              />
+            </CheckInputContainer>
+            <LabledInput
               id="userPwCheck"
               value={userPwCheck}
               onChange={handleUserPwCheckChange}
