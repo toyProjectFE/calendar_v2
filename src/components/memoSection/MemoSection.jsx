@@ -4,7 +4,9 @@ import { useQuery, useMutation, useQueryClient } from "react-query";
 import { getMemo, postMemo, deleteMemo } from "../../axios/api";
 import { IdInput, Btn, Label } from "./style";
 
+
 const MemoSection = () => {
+
   // useEffect(() => {
   //   instance.get(`/schedule/memo`).then((res) =>
   //     res.data.map((e) => {
@@ -12,6 +14,7 @@ const MemoSection = () => {
   //     }),
   //   );
   // });
+
 
   const { data } = useQuery("memo", getMemo);
   const queryClient = useQueryClient();
@@ -77,6 +80,7 @@ const MemoSection = () => {
 export default MemoSection;
 
 const Section = styled.div`
+
   width: 15.62%;
   padding: 20px;
   display: flex;
@@ -111,4 +115,5 @@ const DeleteBtn = styled.button`
   outline: 0;
   border: 0;
   width: 15%;
-`;
+`
+

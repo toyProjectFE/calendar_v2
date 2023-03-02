@@ -20,6 +20,7 @@ import {
   Title,
   Button,
   Allboxli,
+  Nickname,
 } from "./style";
 
 function Detailleftbox() {
@@ -171,7 +172,7 @@ function Detailleftbox() {
                     </svg>
                   </Button>
                   <div onClick={() => ModalButton(item.id)}>
-                    <p>작성자 : {item.author}</p>
+                    <Nickname>작성자 : {item.author}</Nickname>
                     <div>
                       <Title>{item.title}</Title>
                       <Content>{item.contents}</Content>
@@ -227,7 +228,7 @@ function Detailleftbox() {
                     </svg>
                   </Button>
                   <div onClick={() => ModalButton(item.id)}>
-                    <Content>작성자 : {item.author}</Content>
+                    <Nickname>작성자 : {item.author}</Nickname>
                     <div>
                       <Title>{item.title}</Title>
                       <Content>{item.contents}</Content>

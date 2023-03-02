@@ -75,8 +75,8 @@ const DivContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin-top: 15px;
-`;
+  margin-top:15px;
+`
 
 const Liha = styled.div`
   display: flex;
@@ -89,42 +89,44 @@ const Liha = styled.div`
 `;
 
 const SignUpBtn = styled.button`
-  color: #1d1d1d;
-  background: none;
+
+  color:#1d1d1d;
+  background:none;
   cursor: pointer;
 `;
 const Snslogin = styled.p`
   text-align: center;
-  width: 100%;
-  margin: 40px 0 15px;
-  position: relative;
-
-  &::after {
+  width:100%;
+  margin:40px 0 15px;
+  position:relative;
+  
+  &::after{
     position: absolute;
-    content: "";
-    width: 100%;
-    height: 1px;
-    background: #eee;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto;
+    content: '';
+    width:100%;
+    height:1px;
+    background:#eee;
+    top:0;
+    bottom:0;
+    left:0;
+    margin:auto;
     z-index: -2;
   }
-  &::before {
-    background: #fff;
-    width: 120px;
-    height: 10px;
-    top: 0;
-    left: 0;
-    right: 0;
+  &::before{
+    background:#fff;
+    width:120px;
+    height:10px;
+    top:0;
+    left:0;
+    right:0;
     z-index: -1;
-    bottom: 0;
-    margin: auto;
-    content: "";
+    bottom:0;
+    margin:auto;
+    content: '';
     position: absolute;
   }
-`;
+`
+
 export {
   LoginTitle,
   Liha,
@@ -135,5 +137,6 @@ export {
   LoginBtnKaKAo,
   DivContainer,
   SignUpBtn,
-  Snslogin,
+  Snslogin
+
 };

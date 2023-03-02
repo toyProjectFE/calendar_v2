@@ -69,28 +69,30 @@ function Login() {
       <StyledDiv>
         <LoginTitle>Login</LoginTitle>
         <form onSubmit={handleSubmitButtonClick}>
-          <IdInput
-            id="userId"
-            placeholder="아이디를 입력해주세요."
-            value={userId}
-            onChange={handleUserIdChange}
-            type="text"
-          />
 
-          <IdInput
-            id="userPw"
-            placeholder="비밀번호를 입력해주세요."
-            value={userPw}
-            onChange={handleUserPwChange}
-            type="password"
-          />
-          <LoginBtn>Login</LoginBtn>
-          <DivContainer>
-            <span>아직 회원이 아니신가요?</span>
-            <SignUpBtn onClick={gotoSignUp}>회원가입</SignUpBtn>
-          </DivContainer>
-          <Snslogin>소셜로그인</Snslogin>
-          <LoginBtnKaKAo onClick={loginHandler}>kakao Login</LoginBtnKaKAo>
+            <IdInput
+              id="userId"
+              placeholder="아이디를 입력해주세요."
+              value={userId}
+              onChange={handleUserIdChange}
+              type="text"
+            />
+
+            <IdInput
+              id="userPw"
+              placeholder="비밀번호를 입력해주세요."
+              value={userPw}
+              onChange={handleUserPwChange}
+              type="password"
+            />
+            <LoginBtn>Login</LoginBtn>
+            <DivContainer>
+              <span>아직 회원이 아니신가요?</span>
+              <SignUpBtn onClick={gotoSignUp}>회원가입</SignUpBtn>
+            </DivContainer>
+            <Snslogin>소셜로그인</Snslogin>
+            <LoginBtnKaKAo onClick={loginHandler}>kakao Login</LoginBtnKaKAo>
+
         </form>
       </StyledDiv>
       <Liha>동영상이지롱</Liha>

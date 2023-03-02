@@ -1,17 +1,17 @@
 import instance from "./instance";
 
 const getMemo = async () => {
-  const response = await instance.get(`/schedule/memo`);
-  return response.data;
+
+const response = await instance.get(`/schedule/memo`);
+return response.data;
 };
 
 const postMemo = async (newMemo) => {
-  await instance.post(`/schedule/memo`, newMemo);
+await instance.post(`/schedule/memo`, newMemo);
 };
 const deleteMemo = async (id) => {
-  await instance.delete(`/schedule/memo/${id}`);
-};
-
+await instance.delete(`/schedule/memo/${id}`);
+}
 const getSchedules = async () => {
   const response = await instance.get(`/data`);
   return response.data;
@@ -62,9 +62,11 @@ const addUser = async (newUser) => {
   return await instance.post(`/user/signup`, newUser);
 };
 
+
 const kakaoToken = async (kakaoLogin) => {
   return await instance.post(`/kakao/login`, kakaoLogin);
 };
+
 
 const getLoginUser = async () => {
   return await instance.get(`/user/login`);
@@ -92,8 +94,7 @@ export {
   reTouchSchedule,
   kakaoToken,
   checkUser,
-  getMemo,
-  postMemo,
-  deleteMemo,
+
+getMemo,postMemo,deleteMemo
 
 };
