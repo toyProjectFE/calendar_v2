@@ -15,7 +15,7 @@ import { useMutation, useQueryClient } from "react-query";
 import { loginUser } from "../../axios/api";
 import { useNavigate } from "react-router";
 import { setCookie } from "../../axios/cookies";
-
+import bonobono from "./bonobono.jpeg";
 function Login() {
   const [userId, setUserId] = useState("");
   const [userPw, setUserPw] = useState("");
@@ -95,7 +95,7 @@ function Login() {
 
         </form>
       </StyledDiv>
-      <Liha>동영상이지롱</Liha>
+      <img src={bonobono}></img>
     </MainContainer>
   );
 }
