@@ -8,24 +8,16 @@ const MainContainer = styled.div`
 const StyledDiv = styled.div`
   width: 30%;
   align-self: center;
-  padding: 0 5%;
+  padding: 0 4%;
   box-sizing: border-box;
 `;
-const Loginbox = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
+
 const LoginTitle = styled.h3`
   font-size: 36px;
   line-height: 1;
   font-weight: 600;
   margin-bottom: 30px;
   width: 100%;
-`;
-const FormContainer = styled.div`
-  display: flex;
-  width: 100%;
-  flex-wrap: wrap;
 `;
 
 const IdInput = styled.input`
@@ -38,7 +30,7 @@ const IdInput = styled.input`
   border: 0;
   outline: 0;
   border: 1px solid #f8f8f8;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   &::placeholder {
     color: #e2e2e2;
     font-family: "Pretendard";
@@ -51,7 +43,7 @@ const IdInput = styled.input`
 const LoginBtn = styled.button`
   width: 100%;
   height: 50px;
-  margin-bottom: 15px;
+  margin-top: 15px;
   border-radius: 5px;
   box-sizing: border-box;
   background-color: rgb(199, 80, 240);
@@ -67,7 +59,6 @@ const LoginBtn = styled.button`
 const LoginBtnKaKAo = styled.button`
   width: 100%;
   height: 50px;
-  margin-bottom: 15px;
   border-radius: 5px;
   box-sizing: border-box;
   background-color: rgb(250, 255, 0);
@@ -84,6 +75,7 @@ const DivContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  margin-top: 15px;
 `;
 
 const Liha = styled.div`
@@ -96,44 +88,42 @@ const Liha = styled.div`
   width: 70%;
 `;
 
-function LabledInput({ id, label, placeholder, value, onChange }) {
-  return (
-    <StyledContainer>
-      <StyledLabel htmlFor={id}>{label}</StyledLabel>
-      <StyledInput
-        id={id}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-      />
-    </StyledContainer>
-  );
-}
-const StyledContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 10px;
-`;
-
-const StyledInput = styled.input`
-  height: 30px;
-  width: 300px;
-  border: 0;
-  border-radius: 5px;
-  padding-left: 10px;
-`;
-
-const StyledLabel = styled.label`
-  margin-right: 10px;
-  font-weight: 700;
-`;
-
 const SignUpBtn = styled.button`
-  background-color: transparent;
-  border: 1px solid black;
+  color: #1d1d1d;
+  background: none;
   cursor: pointer;
+`;
+const Snslogin = styled.p`
+  text-align: center;
+  width: 100%;
+  margin: 40px 0 15px;
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 1px;
+    background: #eee;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    z-index: -2;
+  }
+  &::before {
+    background: #fff;
+    width: 120px;
+    height: 10px;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    bottom: 0;
+    margin: auto;
+    content: "";
+    position: absolute;
+  }
 `;
 export {
   LoginTitle,
@@ -144,8 +134,6 @@ export {
   LoginBtn,
   LoginBtnKaKAo,
   DivContainer,
-  FormContainer,
-  Loginbox,
-  LabledInput,
   SignUpBtn,
+  Snslogin,
 };

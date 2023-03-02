@@ -2,18 +2,11 @@ import React from "react";
 import { Headerwrap, Link2, Right, Button } from "./style";
 import { removeCookie } from "../../axios/cookies";
 import { Link } from "react-router-dom";
-import { getLoginUser } from "../../axios/api";
-import { useMutation, useQueryClient } from "react-query";
-import { loginUser } from "../../axios/api";
-function Header() {
-  const mutation = useMutation(loginUser, {
-    onSuccess: (response) => {
-      console.log(response.data.username);
-    },
-  });
 
+function Header() {
   const logoutBtn = () => {
     removeCookie("ACCESS_TOKEN");
+    localStorage.removeItem("name");
   };
 
   return (
@@ -21,7 +14,7 @@ function Header() {
       <Link2 to="/Main">Calendar</Link2>
       <Right>
         <p>
-          <span>000</span> 님 환영합니다!
+          <span>{localStorage.getItem("name")}</span> 님 환영합니다!
         </p>
         <Link to="/">
           <Button onClick={logoutBtn}>로그아웃</Button>

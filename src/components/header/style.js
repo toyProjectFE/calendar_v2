@@ -31,6 +31,7 @@ const Button = styled.button`
   padding-left: 24px;
   position: relative;
   background: none;
+  cursor: pointer;
   &::after {
     position: absolute;
     left: 0;

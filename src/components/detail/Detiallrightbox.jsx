@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useMutation, useQueryClient } from "react-query";
 import { addSchedule } from "../../axios/api";
 import { useParams } from "react-router";
-import { useQuery } from "react-query";
+
 import {
   Rightbg,
   Label,
@@ -61,7 +61,6 @@ function Detiallrightbox() {
       author: author,
       contents: contents,
       date: id,
-      
     };
 
     mutation.mutate({ id, newSchedule });
