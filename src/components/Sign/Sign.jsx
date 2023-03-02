@@ -34,6 +34,16 @@ function Sign() {
       setUserPwCheck("");
     },
   });
+
+  const mutation2 = useMutation(checkUser, {
+    onSuccess: (response) => {
+      queryClient.invalidateQueries("user");
+      alert("사용가능한 아이디입니다.");
+    },
+    onError: (response) => {
+      alert("이미 사용중인 아이디입니다.");
+    },
+  });
   const [userId, setUserId] = useState("");
   const [userName, setUserName] = useState("");
   const [userPw, setUserPw] = useState("");
@@ -65,6 +75,14 @@ function Sign() {
     mutation.mutate(newUser);
   };
 
+  const handleCheckButtonClick = async () => {
+    console.log("userId", userId);
+    const checkUser = {
+      email: userId,
+    };
+    mutation2.mutate(checkUser);
+  };
+
   return (
     <MainContainer>
       <FlexConatainer>
@@ -80,7 +98,7 @@ function Sign() {
                 placeholder="제목을 입력해주세요."
                 value={userId}
                 onChange={handleUserIdChange}
-                // onClick={handleCheckButtonClick}
+                onClick={handleCheckButtonClick}
               />
             </CheckInputContainer>
             <CheckInputContainer>
