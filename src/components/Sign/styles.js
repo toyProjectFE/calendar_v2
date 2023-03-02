@@ -25,7 +25,8 @@ const Signbtn = styled.button`
   line-height: 50px;
   color:#fff;
   border-radius: 5px;
-  background:#c650f0
+  background:#c650f0;
+  cursor: pointer;
 `
 const CheckTitle = styled.div`
   font-size: 12px;

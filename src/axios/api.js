@@ -46,7 +46,7 @@ const swichTrueSchedule = async (swichbtn) => {
 const swichFalseSchedule = async (swichFalseBtn) => {
   await instance.patch(
     `/date/schedule/cancel/${swichFalseBtn.id}`,
-    swichFalseBtn,
+    swichFalseBtn
   );
 };
 
@@ -75,6 +75,10 @@ const loginUser = async (newUser) => {
   return await instance.post(`/user/login`, newUser);
 };
 
+const checkUser = async (userId) => {
+  return await instance.post(`/user/idCheck`, userId);
+};
+
 export {
   getSchedules,
   addSchedule,
@@ -88,5 +92,6 @@ export {
   getLoginUser,
   reTouchSchedule,
   kakaoToken,
+  checkUser,
 
 };

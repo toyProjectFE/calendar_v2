@@ -14,7 +14,7 @@ import {
   IdInput,
 } from "../Login/styles";
 import { useMutation, useQueryClient } from "react-query";
-import { addUser } from "../../axios/api";
+import { addUser, checkUser } from "../../axios/api";
 import { useNavigate } from "react-router";
 
 function Sign() {
@@ -31,6 +31,16 @@ function Sign() {
       setUserName("");
       setUserPw("");
       setUserPwCheck("");
+    },
+  });
+
+  const mutation2 = useMutation(checkUser, {
+    onSuccess: (response) => {
+      queryClient.invalidateQueries("user");
+      alert("사용가능한 아이디입니다.");
+    },
+    onError: (response) => {
+      alert("이미 사용중인 아이디입니다.");
     },
   });
   const [userId, setUserId] = useState("");
@@ -64,6 +74,14 @@ function Sign() {
     mutation.mutate(newUser);
   };
 
+  const handleCheckButtonClick = async () => {
+    console.log("userId", userId);
+    const checkUser = {
+      email: userId,
+    };
+    mutation2.mutate(checkUser);
+  };
+
   return (
     <MainContainer>
       <StyledDiv>
@@ -75,10 +93,12 @@ function Sign() {
               id="userId"
               value={userId}
               onChange={handleUserIdChange}
-              placeholer="아이디를 적어주세요"
+              placeholder="아이디를 적어주세요"
               type="text"
             />
-            {/* <Signbtn type="button" onClick={onClick}>중복확인</Signbtn> */}
+            <Signbtn type="button" onClick={handleCheckButtonClick}>
+              중복확인
+            </Signbtn>
           </Signbox>
           <Signbox>
             <Signlabel htmlFor="userPw">비밀번호</Signlabel>
@@ -86,7 +106,7 @@ function Sign() {
               id="userPw"
               value={userPw}
               onChange={handleUserPwChange}
-              placeholer="비밀번호를 적어주세요"
+              placeholder="비밀번호를 적어주세요"
               type="password"
             />
           </Signbox>
@@ -96,7 +116,7 @@ function Sign() {
               id="userPwCheck"
               value={userPwCheck}
               onChange={handleUserPwCheckChange}
-              placeholer="비밀번호확인을 해주세요"
+              placeholder="비밀번호확인을 해주세요"
               type="password"
             />
             {/* 비밀번호와 비밀번호 확인이 일치하지 않을 때 */}
@@ -112,7 +132,7 @@ function Sign() {
               id="userName"
               value={userName}
               onChange={handleUserNameCheckChange}
-              placeholer="닉네임을 적어주세요"
+              placeholder="닉네임을 적어주세요"
               type="text"
             />
           </Signbox>
