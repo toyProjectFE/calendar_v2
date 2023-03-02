@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-  Liha,
   MainContainer,
   IdInput,
   StyledDiv,
