@@ -58,7 +58,7 @@ function Modal({ item, delBtn, closeBtn, date }) {
       contents: contentsChange,
     };
     reTouchMutation.mutate({ date, reTouch });
-    //window.location.reload();
+    window.location.reload();
   };
   return (
     <Modalbg>
