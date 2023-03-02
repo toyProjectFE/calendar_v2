@@ -10,7 +10,6 @@ import {
   DivContainer,
   SignUpBtn,
   Snslogin,
-  Snslogin,
 } from "./styles";
 import { useMutation, useQueryClient } from "react-query";
 import { loginUser } from "../../axios/api";

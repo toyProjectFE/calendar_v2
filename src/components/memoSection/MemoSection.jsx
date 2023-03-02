@@ -1,12 +1,9 @@
 import React, { useState } from "react";
-import React, { useState } from "react";
 import styled from "styled-components";
 import { useQuery, useMutation, useQueryClient } from "react-query";
 import { getMemo, postMemo, deleteMemo } from "../../axios/api";
 import { IdInput, Btn, Label } from "./style";
-import { useQuery, useMutation, useQueryClient } from "react-query";
-import { getMemo, postMemo, deleteMemo } from "../../axios/api";
-import { IdInput, Btn, Label } from "./style";
+
 
 const MemoSection = () => {
 

@@ -9,19 +9,6 @@ import {
   LoginBtn,
   IdInput,
 } from "../Login/styles";
-  CheckTitle,
-  Signbox,
-  Signlabel,
-  Signbtn,
-} from "./styles";
-import {
-  LoginTitle,
-  StyledDiv,
-  Liha,
-  MainContainer,
-  LoginBtn,
-  IdInput,
-} from "../Login/styles";
 import { useMutation, useQueryClient } from "react-query";
 import { addUser, checkUser } from "../../axios/api";
 import { useNavigate } from "react-router";
