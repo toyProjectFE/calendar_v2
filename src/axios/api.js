@@ -61,13 +61,12 @@ const addUser = async (newUser) => {
   return await instance.post(`/user/signup`, newUser);
 };
 
-<<<<<<< HEAD
-=======
+
 const kakaoToken = async (kakaoLogin) => {
   return await instance.post(`/kakao/login`, kakaoLogin);
 };
 
->>>>>>> 25d1ec3dffa1911884785a5db63e4ad46986e1f5
+
 const getLoginUser = async () => {
   return await instance.get(`/user/login`);
 };
@@ -88,8 +87,6 @@ export {
   loginUser,
   getLoginUser,
   reTouchSchedule,
-<<<<<<< HEAD
-=======
   kakaoToken,
->>>>>>> 25d1ec3dffa1911884785a5db63e4ad46986e1f5
+
 };

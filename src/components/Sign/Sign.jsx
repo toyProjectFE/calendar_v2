@@ -1,19 +1,18 @@
 import React, { useState } from "react";
 import {
   CheckTitle,
-  MainContainer,
-  FormContainer,
-  ArgeeContainer,
-  CheckContainer,
-  SignTitle,
-  TitleContainer,
-  FlexConatainer,
-  LabledInput,
-  CheckInputContainer,
-  BtnCheck,
-  BtnLabledInput,
+  Signbox,
+  Signlabel,
+  Signbtn,
 } from "./styles";
-
+import {
+  LoginTitle,
+  StyledDiv,
+  Liha,
+  MainContainer,
+  LoginBtn,
+  IdInput,
+} from "../Login/styles";
 import { useMutation, useQueryClient } from "react-query";
 import { addUser } from "../../axios/api";
 import { useNavigate } from "react-router";
@@ -67,37 +66,38 @@ function Sign() {
 
   return (
     <MainContainer>
-      <FlexConatainer>
-        <TitleContainer>
-          <SignTitle>회원가입</SignTitle>
-        </TitleContainer>
+      <StyledDiv>
+        <LoginTitle>회원가입</LoginTitle>
         <form onSubmit={handleSubmitButtonClick}>
-          <FormContainer>
-            <CheckInputContainer>
-              <BtnLabledInput
-                id="userId"
-                label="아이디"
-                placeholder="제목을 입력해주세요."
-                value={userId}
-                onChange={handleUserIdChange}
-                // onClick={handleCheckButtonClick}
-              />
-            </CheckInputContainer>
-            <CheckInputContainer>
-              <LabledInput
-                id="userPw"
-                label="비밀번호"
-                placeholder="비밀번호를 입력해주세요."
-                value={userPw}
-                onChange={handleUserPwChange}
-              />
-            </CheckInputContainer>
-            <LabledInput
+          <Signbox>
+            <Signlabel htmlFor="userId">아이디</Signlabel>
+            <IdInput
+              id="userId"
+              value={userId}
+              onChange={handleUserIdChange}
+              placeholer="아이디를 적어주세요"
+              type="text"
+            />
+            {/* <Signbtn type="button" onClick={onClick}>중복확인</Signbtn> */}
+          </Signbox>
+          <Signbox>
+            <Signlabel htmlFor="userPw">비밀번호</Signlabel>
+            <IdInput
+              id="userPw"
+              value={userPw}
+              onChange={handleUserPwChange}
+              placeholer="비밀번호를 적어주세요"
+              type="password"
+            />
+          </Signbox>
+          <Signbox>
+            <Signlabel htmlFor="userPwCheck">비밀번호확인</Signlabel>
+            <IdInput
               id="userPwCheck"
-              label="비밀번호확인"
-              placeholder="비밀번호를 한번 더 입력해주세요."
               value={userPwCheck}
               onChange={handleUserPwCheckChange}
+              placeholer="비밀번호확인을 해주세요"
+              type="password"
             />
             {/* 비밀번호와 비밀번호 확인이 일치하지 않을 때 */}
             {userPw !== userPwCheck && (
@@ -105,32 +105,22 @@ function Sign() {
                 비밀번호와 비밀번호 확인이 일치하지 않습니다.
               </CheckTitle>
             )}
-            <CheckInputContainer>
-              <LabledInput
-                id="userName"
-                label="닉네임"
-                placeholder="닉네임을 입력해주세요."
-                value={userName}
-                onChange={handleUserNameCheckChange}
-              />
-            </CheckInputContainer>
-          </FormContainer>
-          <ArgeeContainer>
-            <span>이용약관동의</span>
-            <CheckContainer>
-              <div>
-                <input type="checkbox" />
-                <label>이용약관 동의</label>
-              </div>
-              <div>
-                <input type="checkbox" />
-                <label>개인정보 수집,이용 동의</label>
-              </div>
-            </CheckContainer>
-          </ArgeeContainer>
-          <button type="submit">가입하기</button>
+          </Signbox>
+          <Signbox>
+            <Signlabel htmlFor="userPwCheck">닉네임</Signlabel>
+            <IdInput
+              id="userName"
+              value={userName}
+              onChange={handleUserNameCheckChange}
+              placeholer="닉네임을 적어주세요"
+              type="text"
+            />
+          </Signbox>
+
+          <LoginBtn type="submit">가입하기</LoginBtn>
         </form>
-      </FlexConatainer>
+      </StyledDiv>
+      <Liha>동영상이지롱</Liha>
     </MainContainer>
   );
 }

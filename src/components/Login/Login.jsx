@@ -8,9 +8,8 @@ import {
   LoginBtn,
   LoginBtnKaKAo,
   DivContainer,
-  FormContainer,
-  LabledInput,
   SignUpBtn,
+  Snslogin,
 } from "./styles";
 import { useMutation, useQueryClient } from "react-query";
 import { loginUser } from "../../axios/api";
@@ -70,30 +69,28 @@ function Login() {
       <StyledDiv>
         <LoginTitle>Login</LoginTitle>
         <form onSubmit={handleSubmitButtonClick}>
-          <FormContainer>
-            <LabledInput
+            <IdInput
               id="userId"
-              label="아이디"
               placeholder="아이디를 입력해주세요."
               value={userId}
               onChange={handleUserIdChange}
+              type="text"
             />
 
-            <LabledInput
+            <IdInput
               id="userPw"
-              label="비밀번호"
               placeholder="비밀번호를 입력해주세요."
               value={userPw}
               onChange={handleUserPwChange}
+              type="password"
             />
             <LoginBtn>Login</LoginBtn>
-            <LoginBtnKaKAo onClick={loginHandler}>kakao Login</LoginBtnKaKAo>
-
             <DivContainer>
-              <span>아직 회원 아님?</span>
+              <span>아직 회원이 아니신가요?</span>
               <SignUpBtn onClick={gotoSignUp}>회원가입</SignUpBtn>
             </DivContainer>
-          </FormContainer>
+            <Snslogin>소셜로그인</Snslogin>
+            <LoginBtnKaKAo onClick={loginHandler}>kakao Login</LoginBtnKaKAo>
         </form>
       </StyledDiv>
       <Liha>동영상이지롱</Liha>
