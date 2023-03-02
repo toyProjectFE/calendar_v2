@@ -118,6 +118,14 @@ const Title = styled.em`
   white-space: nowrap;
   text-overflow: ellipsis;
 `;
+const Nickname = styled.em`
+  line-height: 1;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 150px;
+`;
 const Content = styled.p`
   line-height: 20px;
   margin-top: 15px;
@@ -322,5 +330,6 @@ export {
   Modalbtn1,
   Modalbtn2,
   Modalbtn3,
-  Modalp
+  Modalp,
+  Nickname
 };

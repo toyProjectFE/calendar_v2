@@ -28,10 +28,10 @@ function Login() {
       // console.log(response.headers);
       queryClient.invalidateQueries("user");
       setCookie("ACCESS_TOKEN", response.headers.authorization);
+      console.log(response.data.username);
       navigate("/main");
     },
-    onError: (response) => {
-      // console.log(response);
+    onError: () => {
       alert("로그인정보가 일치하지 않습니다.");
     },
   });

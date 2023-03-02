@@ -20,6 +20,7 @@ import {
   Title,
   Button,
   Allboxli,
+  Nickname,
 } from "./style";
 
 function Detailleftbox() {
@@ -147,7 +148,6 @@ function Detailleftbox() {
                   <Button
                     onClick={() => swichTrueHander(item.id, item.complete)}
                   >
-                    
                     <svg
                       width="12"
                       height="9"
@@ -174,7 +174,7 @@ function Detailleftbox() {
                     </svg>
                   </Button>
                   <div onClick={() => ModalButton(item.id)}>
-                    <p>작성자 : {item.author}</p>
+                    <Nickname>작성자 : {item.author}</Nickname>
                     <div>
                       <Title>{item.title}</Title>
                       <Content>{item.contents}</Content>
@@ -200,7 +200,7 @@ function Detailleftbox() {
           {data.map((item) => {
             if (item.complete) {
               return (
-                <Allboxli key={item.id} >
+                <Allboxli key={item.id} className="on">
                   <Button
                     onClick={() => swichfalseHander(item.id, item.complete)}
                   >
@@ -230,7 +230,7 @@ function Detailleftbox() {
                     </svg>
                   </Button>
                   <div onClick={() => ModalButton(item.id)}>
-                    <Content>작성자 : {item.author}</Content>
+                    <Nickname>작성자 : {item.author}</Nickname>
                     <div>
                       <Title>{item.title}</Title>
                       <Content>{item.contents}</Content>
